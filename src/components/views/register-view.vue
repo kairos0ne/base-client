@@ -14,7 +14,7 @@
             </div>
 			<div id="content_section" class="col-md-7 col-lg-7 col-sm-12">
 				<!-- Main application space -->
-				<addworkflow></addworkflow>
+				
 			</div>
         </colgroup>
     </div>
@@ -25,6 +25,8 @@
 /* eslint-disable no-unused-vars*/
 /* eslint-disable no-undef*/
 /* eslint-disable prefer-template*/
+
+import register from './authentication/register'
 
 // Start vue script for vm
 export default {
@@ -37,7 +39,7 @@ export default {
   ready() {
   },
   components: {
-    addworkflow,
+    register,
   },
   props: {
   },

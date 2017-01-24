@@ -6,6 +6,7 @@ import welcome from './components/views/welcome-view';
 import foundation from './components/views/foundation-view';
 import dashboard from './components/views/dashboard-view';
 import introduction from './components/views/introduction-view';
+import register from './components/views/registration-view';
 
 const VueRouter = require('vue-router');
 
@@ -21,13 +22,12 @@ Vue.use(VueResource);
 
 require('flexboxgrid');
 
-require('bootstrap');
-
 const routes = [
   { path: '/', component: welcome },
   { path: '/dashboard', component: dashboard },
   { path: '/foundation', component: foundation },
   { path: '/introduction', component: introduction },
+  { path: '/register', component: register },
 ];
 
 const router = new VueRouter({

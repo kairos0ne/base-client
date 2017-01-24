@@ -27,7 +27,7 @@
                     <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
 
-                        <li><a href="">Register</a></li>
+                        <li><a href=""><router-link tag="li" to="/register">Register</router-link></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
@@ -52,8 +52,17 @@
   max-height: 35px
   padding-bottom: 2px
 
-.nav-default
+.navbar-default
   min-height: 55px
+
+.navbar-brand 
+  padding: 10px 0px 0px 10px
+
+.navbar-nav
+  li
+    a
+      padding: 26px 10px 0px 10px 
+
     
 </style>
 <script>
