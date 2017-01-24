@@ -61,352 +61,296 @@ li
     height: 135px
 
 
-#research {
-    float: left;
-    margin: 0px 10px 0px 0px;
-    width: 25%;
-    height:25%;
-}
+#research 
+  float: left
+  margin: 0px 10px 0px 0px
+  width: 25%
+  height: 25%
 
-#logo {
-    min-height: 32px;
-}
+#logo 
+  min-height: 32px
 
-@media screen and (max-width:766px) {
-    #logo {
-        height: 32px;
-        margin-top: -5px;
-    }
+@media screen and (max-width:766px) 
+  #logo 
+    height: 32px
+    margin-top: -5px
 
-}
+p 
+  line-height: 2em
+  font-weight: 300
 
+.navbar-default 
+  background-color: transparent
 
-p {
-    line-height: 2em;
-    font-weight: 300;
-}
+.page-header
+  margin: 20px 0 20px
 
-.navbar-default {
-    background-color: transparent; }
+.panel-default > .panel-heading
+  padding: 10px 15px
+  background-color: transparent
 
-.navbar-nav > li > a {
-    padding-top: 37px; }
+.panel 
+  border-radius: 0px
+  margin-top: 20px
 
-.page-header {
-    margin: 20px 0 20px;
+.h1, .h2, .h3, h1, h2, h3 
+  margin-top: 0px
+  margin-bottom: 10px
 
-}
+h1
+  .centre-the-construct
+    font-weight: 100
 
-.panel-default > .panel-heading {
-    padding: 10px 15px;
-    background-color: transparent;
+.survey
+  padding: 20px 40px 30px 0px
 
-}
+h1
+  .survey
+    font-weight: 100
 
-.panel {
-    border-radius: 0px;
-    margin-top: 20px;
-}
+h2
+  .survey
+    font-weight: 100
 
-
-.h1, .h2, .h3, h1, h2, h3 {
-    margin-top: 0px;
-    margin-bottom: 10px;
-}
-h1.centre-the-construct{
-    font-weight: 100;
-}
-.survey{
-    padding: 20px 40px 30px 0px;
-}
-h1.survey{
-    font-weight: 100;
-}
-h2.survey{
-    font-weight: 100;
-}
-h4.bullets-heading {
-    font-size: 1.5em;
-    font-family: Lato;
-    font-weight: 300;
-    margin-bottom: 10px;
-    margin-top: 5px;
-    padding-top: 0px;
-}
+h4
+  .bullets-heading
+    font-size: 1.5em
+    font-family: Lato
+    font-weight: 300
+    margin-bottom: 10px
+    margin-top: 5px
+    padding-top: 0px
 
 
-    /*
-     * Because the bullet is outside of the list’s
-     * container, indent the list entirely
-     */
-    margin-left: 0em;
-}
-.list-group-item {
-    position: relative;
-    display: block;
-    padding: 5px 15px;
-    margin-bottom: -1px;
-    background-color: transparent;
-    border: none;
+.list-group-item 
+  position: relative
+  display: block
+  padding: 5px 15px
+  margin-bottom: -1px
+  background-color: transparent
+  border: none
 
-}
-.list-bullets {
-    display: block;
-    font-family: Lato;
-    font-weight: 300;
-    font-size: 16px;
-    margin-bottom: 5px;
-    line-height: 2.3em;
-}
+.list-bullets 
+  display: block
+  font-family: Lato
+  font-weight: 300
+  font-size: 16px
+  margin-bottom: 5px
+  line-height: 2.3em
 
-.portthumbnail {
-    float: left;
-    padding: 0px 10px 0px 0px;
-}
+.portthumbnail 
+  float: left
+  padding: 0px 10px 0px 0px
 
-.clear {
-    clear: left;
-}
+.clear 
+  clear: left
 
+.form-control 
+  border-radius: 0px
 
-.form-control {
-    border-radius: 0px;
-}
-
-.h1, h1 {
-    font-size: 36px;
-    font-weight: 300;
-}
+h1 
+  font-size: 36px
+  font-weight: 300
 
 /* Tabel Persona Componant Styles */
-table {
-    border: 1px solid #888;
-    border-radius: 0px;
-    width: 100%;
+table 
+  border: 1px solid #888
+  border-radius: 0px
+  width: 100%
 
-}
+td 
+  background-color: #fff
+  width: 25%
 
-th {
+th
+  min-width: 120px
+  padding: 10px 20px
+  color: #888888
+  cursor: pointer
+  -webkit-user-select: none
+  -moz-user-select: none
+  -user-select: none
+  border-bottom: 1px solid #888
 
-    color: #888888;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -user-select: none;
-    border-bottom: 1px solid #888;
-}
+  .active 
+    color: #fff
 
-td {
-    background-color: #fff;
-    width: 25%;
-}
+th
+  .active, .arrow 
+  opacity: 1
 
-th, td {
-    min-width: 120px;
-    padding: 10px 20px;
-}
+.arrow 
+  display: inline-block
+  vertical-align: middle
+  width: 0
+  height: 0
+  margin-left: 5px
+  opacity: 0.66
 
-th.active {
-    color: #fff;
-}
+.arrow.asc 
+  border-left: 4px solid transparent
+  border-right: 4px solid transparent
+  border-bottom: 4px solid #fff
 
-th.active .arrow {
-    opacity: 1;
-}
+.arrow.dsc
+  border-left: 4px solid transparent
+  border-right: 4px solid transparent
+  border-top: 4px solid #fff
 
-.arrow {
-    display: inline-block;
-    vertical-align: middle;
-    width: 0;
-    height: 0;
-    margin-left: 5px;
-    opacity: 0.66;
-}
+.fa-cogs 
+  color: #888888
 
-.arrow.asc {
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-bottom: 4px solid #fff;
-}
+.centre-the-construct 
+  margin-left: 40%
+  margin-top: 15%
 
-.arrow.dsc {
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px solid #fff;
-}
-.fa-cogs {
-    color: #888888;
-}
-
-.centre-the-construct {
-    margin-left: 40%;
-    margin-top: 15%;
-}
 /** Application Alert Alterations **/
 
-.thumbalert{
-    padding-right: 10px;
-}
-.alert-success {
-    color: #555;
-    background-color: #f3f3f3;
-    border-color: #888888;
-}
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 0px;
-}
+.thumbalert
+  padding-right: 10px
+
+.alert-success 
+  color: #555
+  background-color: #f3f3f3
+  border-color: #888888
+
+.alert 
+  padding: 15px
+  margin-bottom: 20px
+  border: 1px solid transparent
+  border-radius: 0px
 
 /* links */
 
-a, a :active, a:hover{
-    color: #757575;
-    text-decoration: none;
-}
+a, a :active, a :hover
+    color: #757575
+    text-decoration: none
 
-#inputID {
-    margin-bottom: 10px;
-}
+#inputID 
+  margin-bottom: 10px
 
+.custom_text_area
+  border: none
+  font-family: Lato
+  font-weight: 300
+  box-shadow: none
+  font-size: x-large
+  float: left
 
-.custom_text_area {
-    border:none;
-    font-family: Lato;
-    font-weight:300;
-    box-shadow: none;
-    font-size: x-large;
-    float: left;
+.custom_text_area:focus 
+  border: none
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
 
-}
-.custom_text_area:focus {
-    border:none
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow:none;
-}
-
-.closebracket{
-position: relative;
-float: left;
+.closebracket
+  position: relative
+  float: left
     
-}
-.openbracket{
-    position: relative;
-    
-}
-.bracket {
-    font-family: Lato;
-    font-size: x-large;
-    font-weight: 100;
-}
+.openbracket
+  position: relative
+
+.bracket 
+  font-family: Lato
+  font-size: x-large
+  font-weight: 100
+
 input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder{
-    color:
-    text-shadow: none;
-    -webkit-text-fill-color: initial;
+textarea::-webkit-input-placeholder
+  color:
+  text-shadow: none
+  -webkit-text-fill-color: initial
 
-}
-input, textarea {
-    font-size: 24px;
-    padding: 10px;
-    width: 100%;
-    color: red;
-    text-shadow: 0px 0px 0px #000;
-    -webkit-text-fill-color: transparent;
-}
+textarea
+  font-size: 24px
+  padding: 10px
+  width: 100%
+  color: red
+  text-shadow: 0px 0px 0px #000
+  -webkit-text-fill-color: transparent
 
-.right-inner-addon {
-    position: relative;
+input
+  .right-inner-addon
+    padding-right: 30px
+    position: relative
 
-}
-.right-inner-addon input {
-    padding-right: 30px;
+.right-inner-addon 
+  img
+    position: absolute
+    right: -10px
+    padding: 10px 12px
+    pointer-events: none
+    top: -8px
 
-}
-.right-inner-addon img {
-    position: absolute;
-    right: -10px;
-    padding: 10px 12px;
-    pointer-events: none;
-    top: -8px;
-}
 /* left inner */
-.left-inner-addon {
-    position: relative;
+.left-inner-addon 
+  position: relative
 
-}
-.left-inner-addon input {
-    padding-left: 30px;
+.left-inner-addon 
+  input 
+    padding-left: 30px
 
-}
-.left-inner-addon img {
-    position: absolute;
-    left: -10px;
-    padding: 10px 12px;
-    pointer-events: none;
-    top: -8px;
-}
-.negative-space {
-    height: 20px;
-    padding-bottom: 20px;
-}
-.grey-icon {
-    color: #999999;
-}
+.left-inner-addon 
+  img 
+    position: absolute
+    left: -10px
+    padding: 10px 12px
+    pointer-events: none
+    top: -8px
 
-html,body {
-    height:100%;
-}
-#wrapper {
-    height: 100%;
-}
-.container-fluid {
-    margin:0px 0px 0px 0px;
-}
+.negative-space 
+  height: 20px
+  padding-bottom: 20px
+
+.grey-icon 
+  color: #999999
+
+html
+  body
+    height: 100%
+
+#wrapper 
+  height: 100%
+
+.container-fluid 
+  margin: 0px 0px 0px 0px
+
 /* Main content panel styling*/
-#main_content_container {
-    margin:0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
-    background-color: #e4e7e3;
-}
-#content_pane_container {
-    margin-left: 0px;
-    padding-left: 0px;
+#main_content_container 
+  margin: 0px 0px 0px 0px
+  padding: 0px 0px 0px 0px
+  background-color: #e4e7e3
 
-}
-@media screen and (max-width:991px) {
-    #content_pane_container{
+#content_pane_container 
+  margin-left: 0px
+  padding-left: 0px
 
-    padding-left:15px;
-    }
-
-
-}
+@media screen and (max-width:991px) 
+  #content_pane_container
+  padding-left: 15px
 
 /*Sidebar Styling*/
-#sidebar_container {
-    margin:0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
-    height: 100%;
-    background-color: rgba(106, 106, 106, 0.18);
+#sidebar_container 
+  margin: 0px 0px 0px 0px
+  padding: 0px 0px 0px 0px
+  height: 100%
+  background-color: rgba(106, 106, 106, 0.18)
 
 
 #sidebar_wrapper 
-    margin:0px 0px 0px 0px
-    padding: 0px 0px 0px 0px
-    border-radius: 0px
-    height: 100%
+  margin: 0px 0px 0px 0px
+  padding: 0px 0px 0px 0px
+  border-radius: 0px
+  height: 100%
 
 #content_section
-    padding-left: 0px
-    height: 100%
+  padding-left: 0px
+  height: 100%
 
 /*Start navbar styling */
 .navbar
-    border-radius: 0px
-    margin-bottom: 0px
+  border-radius: 0px
+  margin-bottom: 0px
 
 p
   .list-group-item 
@@ -426,7 +370,7 @@ p
 #project_panel_client
   #project_panel_BusUnit
     font-size: 12px
-    margin:0 0 0px
+    margin: 0 0 0px
 
 #progress_bar_ID
   .progress  
@@ -457,13 +401,17 @@ p
 
 // Rules for using icons as white on a dark background.
 .material-icons
-  .md-light color: rgba(255, 255, 255, 1)
+  .md-light 
+    color: rgba(255, 255, 255, 1)
 .material-icons
   .md-light.md-inactive 
   color: rgba(255, 255, 255, 0.3)
 
 
 li
+  .navbar-nav
+    padding-top: 37px
+
   #briefItem 
     display: block
     padding-bottom: 0px
@@ -478,13 +426,13 @@ li
   #project_title_edit
     .list-group-item 
       display: block
-      border-radius:0px
+      border-radius: 0px
       border-top: none
       background-color: #e4e7e3
       padding: 0px 0px 0px 0px
-      margin:0px 0px 0px 0px
+      margin: 0px 0px 0px 0px
   
-  .project_panel{
+  .project_panel
     border-top: 5px solid #4f504c
     position: relative
     display: block
@@ -493,7 +441,7 @@ li
     background-color: #fff
   
   .list-group-item:first-child 
-    border-radius:0px
+    border-radius: 0px
     border-top: none
 
   .list-group-item:last-child
@@ -515,10 +463,10 @@ li
 #project_title
   .list-group-item:first-child 
     display: block
-    border-radius:0px
+    border-radius: 0px
     border-top: none
     background-color: #e4e7e3
-    margin-bottom: : 10px
+    margin-bottom: 10px
 
 .project_panel_edit
   border-bottom: 1px solid #4f504c
@@ -608,7 +556,7 @@ textarea
     border-width: thin
     margin-top: 9px
     max-width: 100%
-    min-width:100%
+    min-width: 100%
     min-height: 35px
 
 .edit_input_style_body
@@ -626,7 +574,7 @@ textarea
     color: #333
     margin-top: 9px
     max-width: 100%
-    min-width:100%
+    min-width: 100%
     min-height: 35px
 
 .brief_list
@@ -638,6 +586,4 @@ textarea
   line-height: 1.5em
   border-width: thin
   background-color: #fff
-
-
-
+   

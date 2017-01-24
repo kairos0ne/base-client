@@ -23,12 +23,6 @@ require('flexboxgrid');
 
 require('bootstrap');
 
-/**
- * Start the router and create the paths that the router will use and which components
- * each route calls note that the router itself is instantiated on the app.blade.php
- * file in laravel views/layouts
- */
-
 const routes = [
   { path: '/', component: welcome },
   { path: '/dashboard', component: dashboard },

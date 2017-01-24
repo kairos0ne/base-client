@@ -13,7 +13,7 @@
                     </button>
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="">
-                        <img src="static/base_logo.svg">
+                        <img class="logo" src="static/base_logo.svg">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -46,6 +46,16 @@
         </nav>
     </div>
 </template>
+
+<style lang="sass?indentedSyntax">
+.logo
+  max-height: 35px
+  padding-bottom: 2px
+
+.nav-default
+  min-height: 55px
+    
+</style>
 <script>
 
 export default {
