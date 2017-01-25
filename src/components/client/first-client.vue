@@ -1,26 +1,25 @@
 <template>
     <div>
         <div class="container">
-            <h2 class="survey col-lg-offset-2 col-lg-8 col-md-8 col-sm-12">Add the client details.</h2>
             <div class="negative-space">
             </div>
             <form method="POST" action="" role="form" v-show="! submitted">
                 <div class="form-group col-lg-offset-2" v-show="showname">
                     <div class="col-md-8 col-lg-8 col-sm-12  right-inner-addon pull-left">
                         <div class="left-inner-addon pullright">
-                            <img role="img" src="/svg/openbracket.svg"/>
+                            <img role="img" src="/static/openbracket.svg"/>
                             <input id="clientInput" type="text" class="form-control custom_text_area" name="name" v-model="newClientData.name" placeholder="Client name" v-on:keyup.enter="setNameAdded" autocomplete="off"/>
                         </div>
-                        <img role="img" src="/svg/closebracket.svg"/>
+                        <img role="img" src="/static/closebracket.svg"/>
                     </div>
                 </div>
                 <div class="form-group col-lg-offset-2" v-show="showarea">
                     <div class="col-md-8 col-lg-8 col-sm-12  right-inner-addon pull-left">
                         <div class="left-inner-addon pullright">
-                            <img role="img" src="/svg/openbracket.svg"/>
+                            <img role="img" src="/static/openbracket.svg"/>
                             <input  type="text" class="form-control custom_text_area" name="business_area" id="business_area" v-model="newClientData.business_area" placeholder="What is the core bsuiness focus" v-on:keyup.enter="onFormSubmit" autocomplete="off"/>
                         </div>
-                        <img role="img" src="/svg/closebracket.svg"/>
+                        <img role="img" src="/static/closebracket.svg"/>
                     </div>
                 </div>
             </form>
@@ -82,10 +81,10 @@ export default {
         user_id: null,
       };
       // send ajax request
-      this.$http.post('/api/post/clients', request);
+      this.$http.post('http://localhost:3000/clients', request);
     },
     getClientCount() {
-      this.$http.get('/api/get/clientcount').then((clientnew) => {
+      this.$http.get('http://localhost:3000/clientcount').then((clientnew) => {
           // Set the new client id with a count + 1
         this.newClientData.id = clientnew.data;
       }, (response) => {
@@ -93,7 +92,7 @@ export default {
       });
     },
     getUser() {
-      this.$http.get('/api/get/user').then((userdetails) => {
+      this.$http.get('http://localhost:3000/user').then((userdetails) => {
         this.newClientData.user_id = userdetails.data.id;
       }, (response) => {
         // Errors go here

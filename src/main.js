@@ -6,7 +6,7 @@ import welcome from './components/views/welcome-view';
 import foundation from './components/views/foundation-view';
 import dashboard from './components/views/dashboard-view';
 import introduction from './components/views/introduction-view';
-import register from './components/views/registration-view';
+import register from './components/views/register-view';
 
 const VueRouter = require('vue-router');
 
@@ -22,6 +22,8 @@ Vue.use(VueResource);
 
 require('flexboxgrid');
 
+require('bootstrap');
+
 const routes = [
   { path: '/', component: welcome },
   { path: '/dashboard', component: dashboard },
@@ -36,6 +38,11 @@ const router = new VueRouter({
 
 /* eslint-disable no-new */
 new Vue({
+  http: {
+    headers: {
+      Authorization: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODUzNTYxNjJ9.lFT2W6XPYlZhBp_fXkghi9k9w2u-e4zvnObtCm6XIuM',
+    },
+  },
   router,
   store,
   components: {
@@ -43,6 +50,7 @@ new Vue({
     dashboard,
     foundation,
     introduction,
+    register,
   },
   el: '#app',
   render: h => h(App),
