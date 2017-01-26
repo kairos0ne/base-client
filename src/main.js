@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars*/
+/* eslint-disable no-undef*/
 import Vue from 'vue';
 import App from './App';
 import store from './vuex/store';
@@ -36,6 +37,8 @@ const router = new VueRouter({
   routes, // short for routes: routes
 });
 
+const eventHub = new Vue({});
+
 /* eslint-disable no-new */
 new Vue({
   http: {
@@ -55,6 +58,3 @@ new Vue({
   el: '#app',
   render: h => h(App),
 });
-
-const eventHub = new Vue();
-
