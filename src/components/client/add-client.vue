@@ -65,7 +65,7 @@ export default {
       // Store client in in onboarding vuex state
       const client = this.newClientData;
       this.$store.dispatch('setClientInOnboarding', client);
-      eventHub.$emit('setClient', client);
+      this.$bus.$emit('setClient', client);
       const request = this.newClientData;
       this.submitted = true;
       // set both to false
