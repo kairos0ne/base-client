@@ -6,7 +6,8 @@
 	        </h1>
 	        <p>Base is a tool designed for account, strategic and client teams. It provides a way to leverage BDD methodologies from the outset of the planning process.</p>
 	    </div>
-      
+      <button class="btn btn-md btn-default"><router-link  to="/pricing">Pricing</router-link></button>
+      <button class="btn btn-md btn-default"><router-link  to="/introduction">Introduction</router-link></button>
 	</div>
 </template>
 <script>

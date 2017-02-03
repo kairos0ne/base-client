@@ -91,8 +91,6 @@ export default {
       const project = this.newProjectData;
       // Set vuex state in onboarding
       this.$store.dispatch('setProjectInOnboarding', project);
-      // Use the global event bus to update the layout.
-      eventHub.$emit('setProjectOnboarding', project);
       // Set form submitted to true
       this.submitted = true;
       // Set showarea to false

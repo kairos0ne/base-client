@@ -34,7 +34,7 @@ export default{
   },
   methods: {
     editClient() {
-      // Use eventHub to update the edit view and rediect
+      // Use this.$bus to update the edit view and rediect
       // As a user with the correct privelages
       // When I click a 'edit' button
       // Then I should be redirected to Update CRUD

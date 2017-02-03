@@ -50,5 +50,5 @@ body
     margin: 0px 10px 0px 10px
 
 .bottompage
-  margin: 500px 0px 100px 0px
+  margin: 100px 0px 100px 0px
 </style>

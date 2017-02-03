@@ -1,7 +1,7 @@
 <template>
       <div class="container">
         <div class="col-lg-12 col-md-12">
-          <form method="POST" action="" role="form">
+          <form class="registrationform" method="POST" action="" role="form">
                 <div class="form-group col-lg-offset-2">
                     <div class="col-md-8 col-lg-8 col-sm-12  right-inner-addon pull-left">
                         <div class="left-inner-addon pullright">
@@ -23,8 +23,10 @@
                     </div>
                 </div>
             </form>
-        </div>
+        </div>  
+        <button type="button" class="btn btn-md btn-default registration_button" v-on:click="setDetailsAdded">Submit</button>
       </div>
+      
 </template>
 
 <script>
@@ -56,5 +58,7 @@ export default {
   height: 20px
 #imgspace
   margin: 20px 0px 0px 0px
-
+        
+.registration_button
+  margin: 30px 0px 0px 0px
 </style>

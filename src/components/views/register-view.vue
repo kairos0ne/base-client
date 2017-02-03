@@ -2,7 +2,7 @@
   <div class="page-header col-lg-12 col-md-12 col-sm-12 ">
     <h1>Account Registration</h1>
     </hr>
-	  <p>Redistration is free for one month, accounts are £135 p/m thereafter for any number of users.</p>
+	  <p>Redistration is free for one month, accounts are £135 p/m thereafter for any number of users. More info on the pricing structure we offer can be found under pricing.</p>
      <register></register>
 	</div>
 </template>

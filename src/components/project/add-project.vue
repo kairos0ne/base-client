@@ -116,7 +116,7 @@ export default {
       const project = this.newProjectData;
       // Set vuex state in onboarding
       this.$store.dispatch('setProjectInOnboarding', project);
-      eventHub.$emit('setProject');
+      this.$bus.$emit('setProject');
       // Add the project id to parent vm
       const request = this.newProjectData;
       // show thanks message

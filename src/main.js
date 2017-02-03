@@ -8,6 +8,7 @@ import foundation from './components/views/foundation-view';
 import dashboard from './components/views/dashboard-view';
 import introduction from './components/views/introduction-view';
 import authentication from './components/views/register-view';
+import pricing from './components/views/pricing-view';
 
 const VueRouter = require('vue-router');
 
@@ -31,13 +32,15 @@ const routes = [
   { path: '/foundation', component: foundation },
   { path: '/introduction', component: introduction },
   { path: '/register', component: authentication },
+  { path: '/pricing', component: pricing },
 ];
 
 const router = new VueRouter({
   routes, // short for routes: routes
 });
 
-const eventHub = new Vue({});
+const bus = new Vue();
+Vue.prototype.$bus = bus;
 
 /* eslint-disable no-new */
 new Vue({
@@ -54,6 +57,7 @@ new Vue({
     foundation,
     introduction,
     authentication,
+    pricing,
   },
   el: '#app',
   render: h => h(App),

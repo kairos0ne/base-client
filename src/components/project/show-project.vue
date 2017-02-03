@@ -41,7 +41,7 @@ export default {
     listbrief,
   },
   mounted() {
-    eventHub.$on('setProjectRest', this.getProjectData);
+    this.$bus.$on('setProjectRest', this.getProjectData);
     this.getProjectRest();
   },
   methods: {

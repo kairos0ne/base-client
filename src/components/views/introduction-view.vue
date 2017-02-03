@@ -50,14 +50,14 @@ export default {
   },
   mounted() {
     this.getUser();
-    eventHub.$on('setClientOnboarding', this.clientAdded);
-    eventHub.$on('setProjectOnboarding', this.projectAdded);
-    eventHub.$on('setBriefOnboarding', this.briefAdded);
+    this.$bus.$on('setClientOnboarding', this.clientAdded);
+    this.$bus.$on('setProjectOnboarding', this.projectAdded);
+    this.$bus.$on('setBriefOnboarding', this.briefAdded);
   },
   beforeDestroy() {
-    eventHub.$off('setClientOnboarding', this.clientAdded);
-    eventHub.$off('setProjectOnboarding', this.briefAdded);
-    eventHub.$off('setBriefOnboarding', this.briefAdded);
+    this.$bus.$off('setClientOnboarding', this.clientAdded);
+    this.$bus.$off('setProjectOnboarding', this.briefAdded);
+    this.$bus.$off('setBriefOnboarding', this.briefAdded);
   },
   components: {
     firstclient,

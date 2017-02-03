@@ -91,7 +91,7 @@ export default {
       });
     },
     getUser() {
-      this.$http.get('http://localhost:3000/user').then((userdetails) => {
+      this.$http.get('http://localhost:3000/users').then((userdetails) => {
         this.newClientData.user_id = userdetails.data.id;
       }, (response) => {
         // Errors go here

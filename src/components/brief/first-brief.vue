@@ -73,8 +73,7 @@ export default {
       const brief = this.newBriefData;
       // Set the Vuex onboarding state
       this.$store.dispatch('setBriefInOnboarding', brief);
-      // Set the brief added with eventHub
-      eventHub.$emit('setBriefOnboarding', brief);
+
       // Set a request variable to hold the data
       const request = this.newBriefData;
       // show thanks message
