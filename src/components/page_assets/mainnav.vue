@@ -27,7 +27,7 @@
                     <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
 
-                        <li><a href=""><router-link tag="li" to="/register">Register</router-link></a></li>
+                        <li><a href=""><router-link tag="li" to="/register"><i class="fa fa-handshake-o fa-md"></i>Register</router-link></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">

@@ -6,6 +6,7 @@
 	        </h1>
 	        <p>Base is a tool designed for account, strategic and client teams. It provides a way to leverage BDD methodologies from the outset of the planning process.</p>
 	    </div>
+      
 	</div>
 </template>
 <script>

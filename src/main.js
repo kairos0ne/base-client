@@ -7,7 +7,7 @@ import welcome from './components/views/welcome-view';
 import foundation from './components/views/foundation-view';
 import dashboard from './components/views/dashboard-view';
 import introduction from './components/views/introduction-view';
-import register from './components/views/register-view';
+import authentication from './components/views/register-view';
 
 const VueRouter = require('vue-router');
 
@@ -30,7 +30,7 @@ const routes = [
   { path: '/dashboard', component: dashboard },
   { path: '/foundation', component: foundation },
   { path: '/introduction', component: introduction },
-  { path: '/register', component: register },
+  { path: '/register', component: authentication },
 ];
 
 const router = new VueRouter({
@@ -53,7 +53,7 @@ new Vue({
     dashboard,
     foundation,
     introduction,
-    register,
+    authentication,
   },
   el: '#app',
   render: h => h(App),

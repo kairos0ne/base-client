@@ -67,7 +67,6 @@ export default {
 
       // Set the Vuex state on the client
       this.$store.dispatch('setClientInOnboarding', client);
-      eventHub.$emit('setClientOnboarding', client);
       const request = this.newClientData;
       this.submitted = true;
       // set both to false
