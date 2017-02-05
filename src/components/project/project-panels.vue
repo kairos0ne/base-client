@@ -35,6 +35,7 @@
 /* eslint-disable prefer-template*/
 
 export default {
+  name: 'project-panels',
   data() {
     return {
       ClientRest: {},
@@ -66,7 +67,7 @@ export default {
       this.listView = false;
     },
     setClient(client) {
-      this.$http.get('api/get/projects/' + client.id).then((projects) => {
+      this.$http.get('http:localhost:3000/projects/' + client.id).then((projects) => {
         this.projectList = projects.data;
       }, (projects) => {
         // Errors

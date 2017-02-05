@@ -54,7 +54,8 @@ const state = {
   projectREST: {},
   briefREST: {},
   featureREST: {},
-  scenarioREST: {},
+  epicREST: {},
+  scenarioRest: {},
 };
 
 const mutations = {
@@ -81,41 +82,6 @@ const mutations = {
   },
   [types.SET_FEATURE_REST](state, request) {
     state.featureREST = request;
-  },
-  [types.SET_DASHBOARD_CLIENT](state) {
-    state.dashboardState.focusClient.focus = true;
-    state.dashboardState.focusProject.focus = false;
-    state.dashboardState.focusBrief.focus = false;
-    state.dashboardState.focusFeature.focus = false;
-    state.dashboardState.focusScenario.focus = false;
-  },
-  [types.SET_DASHBOARD_PROJECT](state) {
-    state.dashboardState.focusClient.focus = false;
-    state.dashboardState.focusProject.focus = true;
-    state.dashboardState.focusBrief.focus = false;
-    state.dashboardState.focusFeature.focus = false;
-    state.dashboardState.focusScenario.focus = false;
-  },
-  [types.SET_DASHBOARD_BRIEF](state) {
-    state.dashboardState.focusClient.focus = false;
-    state.dashboardState.focusProject.focus = false;
-    state.dashboardState.focusBrief.focus = true;
-    state.dashboardState.focusFeature.focus = false;
-    state.dashboardState.focusScenario.focus = false;
-  },
-  [types.SET_DASHBOARD_FEATURE](state) {
-    state.dashboardState.focusClient.focus = false;
-    state.dashboardState.focusProject.focus = false;
-    state.dashboardState.focusBrief.focus = false;
-    state.dashboardState.focusFeature.focus = true;
-    state.dashboardState.focusScenario.focus = false;
-  },
-  [types.SET_DASHBOARD_SCENARIO](state) {
-    state.dashboardState.focusClient.focus = false;
-    state.dashboardState.focusProject.focus = false;
-    state.dashboardState.focusBrief.focus = false;
-    state.dashboardState.focusFeature.focus = false;
-    state.dashboardState.focusScenario.focus = true;
   },
 };
 

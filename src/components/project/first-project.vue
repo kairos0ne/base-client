@@ -2,34 +2,25 @@
     <div>
         <!-- Start onboarding specific template - only shows if the prop 'onboarding' is true -->
         <div v-if="onboadring" class="container">
-            <h2 class="survey col-lg-offset-2 col-lg-8 col-md-8 col-sm-12">Enter the project details.</h2>
             <div class="negative-space"></div>
             <form action="" method="POST" role="form" v-show="! submitted">
                 <div class="form-group col-lg-offset-2" v-show="showproject">
                     <div class="col-md-8 col-lg-8 col-sm-12  right-inner-addon pull-left">
                         <div class="left-inner-addon pullright">
-                            <img role="img" src="/svg/openbracket.svg"/>
+                            <img role="img" src="/static/openbracket.svg"/>
                             <input type="text" class="form-control custom_text_area" name="name" id="name" v-model="newProjectData.name" placeholder="Project" v-on:keyup.enter="setProjectAdded" autocomplete="off"/>
                         </div>
-                        <img role="img" src="/svg/closebracket.svg"/>
+                        <img role="img" src="/static/closebracket.svg"/>
                     </div>
                 </div>
                 <div class="form-group col-lg-offset-2" v-show="showdescription">
                     <div class="col-md-8 col-lg-8 col-sm-12  right-inner-addon pull-left">
                         <div class="left-inner-addon pullright">
-                            <img role="img" src="/svg/openbracket.svg"/>
-                            <input type="area" class="form-control custom_text_area" name="description" id="decription" v-model="newProjectData.description" placeholder="What is the core bsuiness focus" v-on:keyup.enter="setDescriptionAdded" autocomplete="off"/>
+                            <img role="img" src="/static/openbracket.svg"/>
+                            <input type="area" class="form-control custom_text_area" name="description" id="decription" v-model="newProjectData.description" placeholder="What is the core bsuiness focus" v-on:keyup.enter="onFormSubmit" autocomplete="off"/>
                         </div>
-                        <img role="img" src="/svg/closebracket.svg"/>
+                        <img role="img" src="/static/closebracket.svg"/>
                     </div>                    
-                </div>
-                <div class="form-group col-lg-offset-2" v-show="showtype">
-                    <div class="col-md-8 col-lg-8 col-sm-12">
-                        <p>Select your prefered project type and click enter.</p>
-                        <select name="" id="input" class="form-control" required="required" v-model="newProjectData.type"  v-on:keyup.enter="onFormSubmit">
-                            <option v-for="item in types" :value="item" >{{item}}</option>
-                        </select>
-                    </div>
                 </div>
             </form>
         </div>  
@@ -50,14 +41,13 @@ export default {
       showdescription: false,
       showtype: false,
       selected: '',
-      type: {},
       parentClient: {},
       newProjectData: {
         id: null,
         client_id: null,
         name: '',
         description: '',
-        status: {},
+        complete: 0,
       },
     };
   },
@@ -78,10 +68,6 @@ export default {
     },
     setDescriptionAdded() {
       this.showdescription = false;
-      this.showtype = true;
-    },
-    setTypeForProject(item) {
-      this.newProjectData.type = this.selected;
     },
     onFormSubmit(e) {
     // Prevent default action
@@ -91,6 +77,7 @@ export default {
       const project = this.newProjectData;
       // Set vuex state in onboarding
       this.$store.dispatch('setProjectInOnboarding', project);
+      this.$bus.$emit('setProjectOnboarding', project);
       // Set form submitted to true
       this.submitted = true;
       // Set showarea to false
@@ -103,16 +90,15 @@ export default {
         name: '',
         description: '',
         client_id: null,
-        status: '',
-        status_value: null,
-        type: '',
+        complete: null,
       };
       // send ajax request to the api resource
-      this.$http.post('/api/post/projects', request);
+      console.log(request);
+      this.$http.post('http://localhost:3000/projects', request);
     },
     getProjectCount() {
-      this.$http.get('/api/get/projectcount').then((projectnew) => {
-        this.newProjectData.id = projectnew.data;
+      this.$http.get('http://localhost:3000/projectcount').then((projectnew) => {
+        this.newProjectData.id = projectnew.data + 1;
       }, (projectnew) => {
         // Errors
       });

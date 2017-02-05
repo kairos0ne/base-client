@@ -22,6 +22,8 @@ const VueResource = require('vue-resource');
 
 Vue.use(VueResource);
 
+Vue.http.headers.common.Authorization = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODYzNjk4NDJ9.cjUWYtixnsSmOSt4JsdLDy0vx5sc9hynkwxldY1H0LM';
+
 require('flexboxgrid');
 
 require('bootstrap');
@@ -44,11 +46,6 @@ Vue.prototype.$bus = bus;
 
 /* eslint-disable no-new */
 new Vue({
-  http: {
-    headers: {
-      Authorization: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODUzNTYxNjJ9.lFT2W6XPYlZhBp_fXkghi9k9w2u-e4zvnObtCm6XIuM',
-    },
-  },
   router,
   store,
   components: {

@@ -4,97 +4,18 @@
 
 // All getters for onboarding
 
-export function getClientFromOnboarding(state) {
-  return state.onboarding.client;
-}
-export function getProjectFromOnboarding(state) {
-  return state.onboarding.project;
-}
-export function getBriefFromOnboarding(state) {
-  return state.onboarding.brief;
-}
+export const getClientFromOnboarding = state => state.onboarding.client;
 
-// All getter for ClientRest State
+export const getProjectFromOnboarding = state => state.onboarding.project;
 
-// whole state
-export function getClientRest(state) {
-  return state.clientREST;
-}
+export const getBriefFromOnboarding = state => state.onboarding.brief;
 
-    // only client
-export function currentClient(state) {
-  return state.clientREST.currentClient;
-}
+// All REST Getters
 
-    // parent User
-export function parentUser(state) {
-  return state.clientREST.user;
-}
-// All getters for Project Rest State
+export const getClientRest = state => state.clientREST;
 
-    // Whole state
-export function getProjectRest(state) {
-  return state.projectREST;
-}
+export const getProjectREST = state => state.projectREST;
 
-    // only project
-export function currentProject(state) {
-  return state.projectREST.currentProject;
-}
+export const getBriefREST = state => state.briefREST;
 
-    // parent Client
-export function parentClient(state) {
-  return state.projectREST.parentClient;
-}
-
-// All getters for Breif Rest
-
-    // Whole state
-export function getBriefRest(state) {
-  return state.briefREST;
-}
-
-    // only brief
-export function currentBrief(state) {
-  return state.briefREST.currentBrief;
-}
-
-    // parent Project
-export function parentProject(state) {
-  return state.briefREST.parentProject;
-}
-
-
-// All getters for Features Rest
-
-// Whole state
-export function getFeatureRest(state) {
-  return state.featureREST;
-}
-
-    // only feature
-export function currentFeature(state) {
-  return state.featureREST.currentFeature;
-}
-
-    // parent Brief
-export function parentBrief(state) {
-  return state.featureREST.parentBrief;
-}
-
-// All getters for Scenarios Rest
-
-// Whole State
-export function getScenarioRest(state) {
-  return state.scenarioREST;
-}
-
-    // Only scenario
-export function currentScenario(state) {
-  return state.scenarioREST.currentScenario;
-}
-
-// Parent feature
-export function parenScenario(state) {
-  return state.scenarioREST.parentFeature;
-}
+export const getFeatureREST = state => state.featureREST;

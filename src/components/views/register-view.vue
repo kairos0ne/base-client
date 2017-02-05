@@ -21,7 +21,7 @@ export default {
       showtoolsbar: false,
     };
   },
-  ready() {
+  mounted() {
   },
   components: {
     register,

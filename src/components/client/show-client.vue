@@ -20,7 +20,8 @@
 /* eslint-disable no-unused-vars*/
 /* eslint-disable no-undef*/
 /* eslint-disable prefer-template*/
-export default{
+export default {
+  name: 'show-client',
   data() {
     return {
       currentClient: {},
@@ -29,16 +30,17 @@ export default{
     };
   },
   mounted() {
+    this.setTheFirstClient();
   },
   beforeDestroy() {
   },
   methods: {
-    editClient() {
-      // Use this.$bus to update the edit view and rediect
-      // As a user with the correct privelages
-      // When I click a 'edit' button
-      // Then I should be redirected to Update CRUD
-      // And the view should contant the correct client object
+    editClient(currentClient) {
+      this.$bus.$emit('setEditClient', currentClient);
+    },
+    setTheFirstClient(client) {
+      this.$bus.$on(setFirstClient, client);
+      this.currentClient = client;
     },
   },
 };

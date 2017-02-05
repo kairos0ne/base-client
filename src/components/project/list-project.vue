@@ -26,7 +26,7 @@ export default {
       status: '',
     };
   },
-  ready() {
+  mounted() {
   },
   methods: {
   },

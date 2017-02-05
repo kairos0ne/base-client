@@ -9,7 +9,6 @@
                     <i class="fa fa-tick pull-right"></i>Complete
                 </a>
                  <a class="badge_lable"><span class="badge"><i class="fa fa-book" ></i>&nbsp;Briefs -&nbsp;{{briefList.length}}</span></a>
-                    
                  <br>
             </li>
             <div id="page_content_brief">
@@ -24,9 +23,8 @@
 /* eslint-disable no-undef*/
 /* eslint-disable prefer-template*/
 
-import listbrief from '../brief/list-brief';
-
 export default {
+  name: 'show-project',
   data() {
     return {
       ProjectRest: {},
@@ -38,26 +36,10 @@ export default {
     };
   },
   components: {
-    listbrief,
   },
   mounted() {
-    this.$bus.$on('setProjectRest', this.getProjectData);
-    this.getProjectRest();
   },
   methods: {
-    editSelectedProject() {
-    // this.$dispatch('setShowProjectFalse');
-    // this.$dispatch('setEditProjectTrue');
-    },
-    getProjectData() {
-      this.ProjectData = this.$store.getters.currentProject;
-      this.parentClient = this.$store.getters.parentClient;
-    },
-    getProjectRest() {
-      this.ProjectRest = this.$store.getters.getProjectRest;
-      this.ProjectData = this.$store.getters.currentProject;
-      this.parentClient = this.$store.getters.parentClient;
-    },
   },
 };
 

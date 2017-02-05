@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     getUser() {
-      this.$http.get('/api/get/user').then((userdetails) => {
+      this.$http.get('http://localhost:3000/users').then((userdetails) => {
         this.user = userdetails.data;
         this.username = userdetails.data.name;
       }, (userdetails) => {

@@ -39,7 +39,10 @@ export default {
     return {
       userDetails: {
         name: '',
+        username: '',
+        email: '',
         password: '',
+        password_confirmation: '',
       },
     };
   },

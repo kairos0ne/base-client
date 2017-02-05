@@ -64,11 +64,11 @@ export default {
       this.getClientCount();
       // Store client in in onboarding vuex state
       const client = this.newClientData;
-
       // Set the Vuex state on the client
       this.$store.dispatch('setClientInOnboarding', client);
       const request = this.newClientData;
       this.submitted = true;
+      this.$bus.$emit('setClientOnboarding', client);
       // set both to false
       this.showarea = false;
       this.showname = true;
@@ -85,13 +85,13 @@ export default {
     getClientCount() {
       this.$http.get('http://localhost:3000/clientcount').then((clientnew) => {
           // Set the new client id with a count + 1
-        this.newClientData.id = clientnew.data;
+        this.newClientData.id = clientnew.data + 1;
       }, (response) => {
         // Errors go here
       });
     },
     getUser() {
-      this.$http.get('http://localhost:3000/users').then((userdetails) => {
+      this.$http.get('http://localhost:3000/users/1').then((userdetails) => {
         this.newClientData.user_id = userdetails.data.id;
       }, (response) => {
         // Errors go here
