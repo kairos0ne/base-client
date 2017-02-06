@@ -1,8 +1,8 @@
 <template>
-    <div class="container-fluid  col-lg-12 col-md-12 col-sm-12 ">
+    <div class="container ">
       <br>
       <h1>Pricing
-        <small>Each purchase gives you access to a Heroku instance and Postgres DB. </small>
+        <small>Each purchase gives you access to a Heroku instance and Postgres DB.</small>
       </h1>
       </hr>
       <div class="col-lg-2 col-md-2 col-sm-5">
@@ -37,10 +37,6 @@
 <style lang="sass?indentedSyntax">
 .fa
   color: #777777
-.box
-  font-style: italic
-  font-size: 13px
-  padding: 0px 0px 5px 0px
 
 .heroku-logo
   max-width: 80px

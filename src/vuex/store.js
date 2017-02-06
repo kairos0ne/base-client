@@ -18,44 +18,16 @@ const state = {
     showproject: false,
     showbrief: false,
   },
-  dashboardState: {
-    focusClient: {
-      focus: false,
-      show: false,
-      update: false,
-      put: false,
-    },
-    focusProject: {
-      focus: false,
-      show: false,
-      update: false,
-      put: false,
-    },
-    focusBrief: {
-      focus: false,
-      show: false,
-      update: false,
-      put: false,
-    },
-    focusFeature: {
-      focus: false,
-      show: false,
-      update: false,
-      put: false,
-    },
-    focusScenario: {
-      focus: false,
-      show: false,
-      update: false,
-      put: false,
-    },
-  },
+  allClients: {},
+  allProjects: {},
+  allBriefs: {},
   clientREST: {},
   projectREST: {},
   briefREST: {},
   featureREST: {},
   epicREST: {},
   scenarioRest: {},
+  initialClient: {},
 };
 
 const mutations = {
@@ -71,17 +43,20 @@ const mutations = {
         // Mutate the state
     state.onboarding.brief = brief;
   },
-  [types.SET_CLIENT_REST](state, request) {
-    state.clientREST = request;
+  [types.SET_CLIENT_REST](state, item) {
+    state.clientREST = item;
   },
-  [types.SET_PROJECT_REST](state, request) {
-    state.projectREST = request;
+  [types.SET_INITIAL_CLIENT](state, request) {
+    state.initialClient = request;
   },
-  [types.SET_BRIEF_REST](state, request) {
-    state.briefREST = request;
+  [types.SET_ALL_CLIENTS](state, clients) {
+    state.allClients = clients;
   },
-  [types.SET_FEATURE_REST](state, request) {
-    state.featureREST = request;
+  [types.SET_ALL_PROJECTS](state, projects) {
+    state.allClients = projects;
+  },
+  [types.SET_ALL_BRIEFS](state, briefs) {
+    state.allClients = briefs;
   },
 };
 

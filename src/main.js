@@ -16,13 +16,15 @@ Vue.use(VueRouter);
 
 const Vuex = require('vuex');
 
+const Dropzone = require('dropzone');
+
 Vue.use(Vuex);
 
 const VueResource = require('vue-resource');
 
 Vue.use(VueResource);
 
-Vue.http.headers.common.Authorization = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODYzNjk4NDJ9.cjUWYtixnsSmOSt4JsdLDy0vx5sc9hynkwxldY1H0LM';
+Vue.http.headers.common.Authorization = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODY1MDc2MDF9.-ato0l6TC7L5plw1LJIvA3bmOvrv52m14vAgE0gRf30';
 
 require('flexboxgrid');
 
@@ -59,3 +61,4 @@ new Vue({
   el: '#app',
   render: h => h(App),
 });
+

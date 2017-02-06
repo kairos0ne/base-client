@@ -17,25 +17,26 @@ export const setBriefInOnboarding = ({ commit }, brief) => {
     commit('SET_FIRST_BRIEF', brief);
   }
 };
-export const setClientRest = ({ commit }, request) => {
-  commit('SET_CLIENT_REST', request);
-};
-export const setProjectRest = ({ commit }, request) => {
-  commit('SET_PROJECT_REST', request);
-};
-export const setBriefRest = ({ commit }, request) => {
-  commit('SET_BRIEF_REST', request);
-};
-export const setFeatureRest = ({ commit }, request) => {
-  commit('SET_FEATURE_REST', request);
-};
-export const setScenarioRest = ({ commit }, request) => {
-  commit('SET_SCENARIO_REST', request);
-};
-export const setCurrentClient = ({ commit }, client) => {
-  commit('SET_CLIENT', client);
-};
-export const setDashboardClient = ({ commit }) => {
-  commit('SET_DASHBOARD_CLIENT');
+export const setClientRest = ({ commit }, item) => {
+  commit('SET_CLIENT_REST', item);
 };
 
+export const setProjectRest = ({ commit }, item) => {
+  commit('SET_PROJECT_REST', item);
+};
+
+export const setInitialClient = ({ commit }, request) => {
+  commit('SET_INITIAL_CLIENT', request);
+};
+
+export const setAllClients = ({ commit }, clients) => {
+  commit('SET_ALL_CLIENTS', clients);
+};
+
+export const setAllProjects = ({ commit }, projects) => {
+  commit('SET_ALL_PROJECTS', projects);
+};
+
+export const setAllBriefs = ({ commit }, briefs) => {
+  commit('SET_ALL_BRIEFS', briefs);
+};

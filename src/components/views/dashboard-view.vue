@@ -1,11 +1,43 @@
 <template>
-    <div id="wrapper">
-        <!-- Start Main Container -->
-        <div class="container-fluid">
-        <listclient></listclient>
+<div>
+<!-- Start Main Container -->
+  <div class="row">
+    <div class="col-lg-2
+                col-md-2
+              ">
+        <div class="box sidebar">
+          <listclient></listclient>
+        </div>
     </div>
+    <div class="col-lg-2
+                col-md-2
+                col-sm-12
+                col-xs-12
+              ">
+        <div class="box">
+          <projectpanels></projectpanels>
+        </div>
+    </div>
+    <div class="col-lg-8
+                col-md-8
+                col-sm-12
+                col-xs-12
+              ">    
+        <div class="box">
+          <showclient></showclient>
+        </div>
+    </div>
+</div>
 </template>
+<style lang="sass?indentedSyntax">
+    .box
+     padding: 0px 10px 0px 10px
 
+    .sidebar
+      height: 100%
+      border-right: 1px
+
+</style>
 <script>
 /* eslint-disable no-unused-vars*/
 /* eslint-disable no-undef*/
@@ -20,6 +52,8 @@
     import showproject from '../project/show-project';
     // import listproject from '../project/list-project';
     import projectpanels from '../project/project-panels';
+    import * as getters from './../../vuex/getters';
+    import * as actions from './../../vuex/actions';
 
     export default {
       name: 'dashboard',
@@ -28,44 +62,56 @@
           // User and Role Based Date
           // Vuex Requests Build
           showClient: true,
-          clientREST: {
-            clients: [],
-          },
-          projectREST: {
-            projects: [],
-          },
-          briefREST: {
-            briefs: [],
-          },
+          client: {},
+          projects: {},
+          briefs: {},
         };
       },
       components: {
         listclient,
+        showclient,
+        projectpanels,
         // Brief Components
 
       },
       mounted() {
+        this.setInitialState();
+        this.getAndSetAllClients();
+        this.getAndSetAllProjects();
+        this.getAndSetAllBriefs();
       },
       beforeDestroy() {
       },
       methods: {
         setInitialState() {
-          // Set the first client as the client that shows first
+          this.$http.get('http://localhost:3000/clients/1').then((item) => {
+            this.client = item.data;
+            this.$store.dispatch('setClientRest', item.data);
+          }, (item) => {
+            // errors
+            console.log(errors);
+          });
         },
-        setSelectedClient(client) {
-          // Set the show states for the view
+        getAndSetAllClients() {
+          this.$http.get('http://localhost:3000/clients').then((clients) => {
+            this.$store.dispatch('setAllClients', clients);
+          }, (clients) => {
+            console.log(errors);
+          });
         },
-        setSelectedProject(project) {
-          // Set the show states for the view
+        getAndSetAllProjects() {
+          this.$http.get('http://localhost:3000/projects').then((projects) => {
+            this.$store.dispatch('setAllProjects', projects);
+          }, (projects) => {
+            console.log(errors);
+          });
         },
-        setSelectedBrief(brief) {
-        // Set the show states for the view
-        },
-        setClientRest() {
-        },
-        setProjectRest() {
-        },
-        setBriefRest() {
+        getAndSetAllBriefs() {
+          this.$http.get('http://localhost:3000/briefs').then((briefs) => {
+            this.$store.dispatch('setAllProjects', briefs);
+          }, (briefs) => {
+            console.log(errors);
+          });
         },
       },
     };

@@ -14,8 +14,14 @@ export const getBriefFromOnboarding = state => state.onboarding.brief;
 
 export const getClientRest = state => state.clientREST;
 
-export const getProjectREST = state => state.projectREST;
+export const getProjectRest = state => state.projectREST;
 
-export const getBriefREST = state => state.briefREST;
+export const getBriefRest = state => state.briefREST;
 
-export const getFeatureREST = state => state.featureREST;
+export const getFeatureRest = state => state.featureREST;
+
+export const getAllClients = state => state.allClients;
+
+export const getAllProjects = state => state.allProjects;
+
+export const getAllBriefs = state => state.allBriefs;
