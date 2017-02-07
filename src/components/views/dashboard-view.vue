@@ -24,7 +24,8 @@
                 col-xs-12
               ">    
         <div class="box">
-          <showclient></showclient>
+          <showclient v-show="showClient"></showclient>
+          <showproject v-show="showProject"></showproject>
         </div>
     </div>
 </div>
@@ -62,6 +63,7 @@
           // User and Role Based Date
           // Vuex Requests Build
           showClient: true,
+          showProject: false,
           client: {},
           projects: {},
           briefs: {},
@@ -70,6 +72,7 @@
       components: {
         listclient,
         showclient,
+        showproject,
         projectpanels,
         // Brief Components
 
@@ -79,8 +82,10 @@
         this.getAndSetAllClients();
         this.getAndSetAllProjects();
         this.getAndSetAllBriefs();
+        this.$bus.$on('setViewProject', this.setProjectShow);
       },
       beforeDestroy() {
+
       },
       methods: {
         setInitialState() {
@@ -108,10 +113,14 @@
         },
         getAndSetAllBriefs() {
           this.$http.get('http://localhost:3000/briefs').then((briefs) => {
-            this.$store.dispatch('setAllProjects', briefs);
+            this.$store.dispatch('setAllBriefs', briefs);
           }, (briefs) => {
             console.log(errors);
           });
+        },
+        setProjectShow() {
+          this.showClient = false;
+          this.showProject = true;
         },
       },
     };

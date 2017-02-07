@@ -2,7 +2,7 @@
     <div class="row">
       <div class="box">
         <ul class="clientlistgroupe"><h4 class="clienlistheading">Clients</h4>
-          <li v-for="item in allClients" @click.prevent="selectClient(item)">{{ item.name }}</li>
+          <li v-for="client in allClients" @click.prevent="selectClient(client)">{{ client.name }}</li>
         </ul>
       </div>
     </div>
@@ -20,7 +20,7 @@
 .clienlistheading
   font-style: normal
   min-width: 200px
-  padding: 0px 10px 13px 5px 
+  padding: 5px 10px 10px 5px 
   border-bottom: 5px solid #4f504c
 
 .clientlistgroupe
@@ -52,10 +52,10 @@ export default {
         console.log(http.errors);
       });
     },
-    selectClient(item) {
-      this.selectedClient = item;
-      this.$store.dispatch('setClientRest', item);
-      console.log(item);
+    selectClient(client) {
+      this.selectedClient = client;
+      this.$store.dispatch('setClientRest', client);
+      console.log(client);
     },
   },
 };

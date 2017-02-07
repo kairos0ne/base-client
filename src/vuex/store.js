@@ -43,8 +43,11 @@ const mutations = {
         // Mutate the state
     state.onboarding.brief = brief;
   },
-  [types.SET_CLIENT_REST](state, item) {
-    state.clientREST = item;
+  [types.SET_CLIENT_REST](state, client) {
+    state.clientREST = client;
+  },
+  [types.SET_PROJECT_REST](state, project) {
+    state.projectREST = project;
   },
   [types.SET_INITIAL_CLIENT](state, request) {
     state.initialClient = request;
@@ -53,10 +56,10 @@ const mutations = {
     state.allClients = clients;
   },
   [types.SET_ALL_PROJECTS](state, projects) {
-    state.allClients = projects;
+    state.allProjects = projects;
   },
   [types.SET_ALL_BRIEFS](state, briefs) {
-    state.allClients = briefs;
+    state.allBriefs = briefs;
   },
 };
 

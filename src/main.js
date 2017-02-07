@@ -24,7 +24,7 @@ const VueResource = require('vue-resource');
 
 Vue.use(VueResource);
 
-Vue.http.headers.common.Authorization = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODY1MDc2MDF9.-ato0l6TC7L5plw1LJIvA3bmOvrv52m14vAgE0gRf30';
+Vue.http.headers.common.Authorization = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODY1NzgwOTZ9.6y6WWmsHuESOUUAcciJ1xnNcY5JJVeV-wn0EEtH2Bfs';
 
 require('flexboxgrid');
 

@@ -20,7 +20,7 @@
 		<ul v-show="listView" class="list-group projectlistclass">
       <li id="project_list_bar" class="list-group-item" v-for="project in currentClient.projects" @click.prevent="setProjectRest(project)">
           <i class="fa fa-briefcase"></i>&nbsp;
-          {{project.name}}
+          {{ project.name }}
       </li>
       <hr>
     </ul>	    
@@ -75,6 +75,7 @@ export default {
   data() {
     return {
       projectList: [],
+      currentProject: {},
       cardView: true,
       listView: false,
     };
@@ -97,9 +98,10 @@ export default {
       this.listView = false;
     },
     setProjectRest(project) {
-      this.request.currentProject = project;
+      this.currentProject = project;
       // Set the currentProject object on the rest state
-      this.$store.dispatch('setProjectRest', request);
+      this.$store.dispatch('setProjectRest', project);
+      this.$bus.$emit('setViewProject', project);
     },
   },
 };

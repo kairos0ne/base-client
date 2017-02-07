@@ -21,8 +21,8 @@ export const setClientRest = ({ commit }, item) => {
   commit('SET_CLIENT_REST', item);
 };
 
-export const setProjectRest = ({ commit }, item) => {
-  commit('SET_PROJECT_REST', item);
+export const setProjectRest = ({ commit }, project) => {
+  commit('SET_PROJECT_REST', project);
 };
 
 export const setInitialClient = ({ commit }, request) => {
