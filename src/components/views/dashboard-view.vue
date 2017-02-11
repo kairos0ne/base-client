@@ -5,7 +5,7 @@
     <div class="col-lg-2
                 col-md-2
               ">
-        <div class="box sidebar">
+        <div id="sidebar" class="box sidebar">
           <listclient></listclient>
         </div>
     </div>
@@ -14,7 +14,7 @@
                 col-sm-12
                 col-xs-12
               ">
-        <div class="box">
+        <div id="middle-bar" class="box">
           <projectpanels></projectpanels>
         </div>
     </div>
@@ -31,13 +31,17 @@
 </div>
 </template>
 <style lang="sass?indentedSyntax">
-    .box
-     padding: 0px 10px 0px 10px
+.box
+  padding: 0px 10px 0px 10px
 
-    .sidebar
-      height: 100%
-      border-right: 1px
+#sidebar     
+  height: 100%
+  border-right: 1px solid #999999
 
+#middle-bar
+  height: 100%
+  border-right: 1px solid #999999
+  
 </style>
 <script>
 /* eslint-disable no-unused-vars*/

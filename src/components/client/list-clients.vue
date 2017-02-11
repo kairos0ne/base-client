@@ -2,7 +2,7 @@
     <div class="row">
       <div class="box">
         <ul class="clientlistgroupe"><h4 class="clienlistheading">Clients</h4>
-          <li v-for="client in allClients" @click.prevent="selectClient(client)">{{ client.name }}</li>
+          <li class="client_list_item" v-for="client in allClients" @click.prevent="selectClient(client)">{{ client.name }}<hr></li>
         </ul>
       </div>
     </div>
@@ -21,11 +21,14 @@
   font-style: normal
   min-width: 200px
   padding: 5px 10px 10px 5px 
-  border-bottom: 5px solid #4f504c
+  border-bottom: 1px solid #999999
 
 .clientlistgroupe
   border-right: 1px 
   height: 100%
+
+
+
 </style>
 <script>
 /* eslint-disable no-unused-vars*/

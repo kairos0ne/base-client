@@ -21,8 +21,8 @@
       <li id="project_list_bar" class="list-group-item" v-for="project in currentClient.projects" @click.prevent="setProjectRest(project)">
           <i class="fa fa-briefcase"></i>&nbsp;
           {{ project.name }}
-      </li>
       <hr>
+      </li>
     </ul>	    
 	</ul>
 </template>
@@ -38,7 +38,7 @@
 #project_title
   margin-top: 10px
   padding-bottom: 10px
-  border-bottom: 5px solid #4f504c
+  border-bottom: 1px solid #999999
 
 .projectlisttopclass
   position: relative
@@ -63,6 +63,11 @@
 hr
   margin: 5px 0px 0px 0px
   padding: 0px
+
+#project_list_bar
+  
+
+
 </style>
 
 <script>
