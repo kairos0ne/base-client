@@ -55,6 +55,7 @@ export default {
     selectClient(client) {
       this.selectedClient = client;
       this.$store.dispatch('setClientRest', client);
+      this.$bus.$emit('setViewClient', client);
       console.log(client);
     },
   },

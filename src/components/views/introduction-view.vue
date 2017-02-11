@@ -3,7 +3,7 @@
         <div id="wrapper">
             <div class="container">
                 <div id="what" class="page-header col-lg-12 col-md-12 col-sm-12 ">
-                    <h1>Welcome {{ username }}.<small> I see this is your first time on the site.  </small></h1>
+                    <h1>Welcome {{ user.name }}.<small> I see this is your first time on the site.  </small></h1>
                     <p>I hope the next couple of steps help you define a strategic approach to developing online tools. Before we get started there are a few details we'll need to setup. It won't take a minute, follow the steps.</p>
                 </div>
             </div>
@@ -29,7 +29,6 @@ export default {
       showClient: true,
       showProject: false,
       showBrief: false,
-      username: '',
       user: {},
       clientRest: {
         user: {},
@@ -66,9 +65,8 @@ export default {
   },
   methods: {
     getUser() {
-      this.$http.get('http://localhost:3000/users').then((userdetails) => {
+      this.$http.get('http://localhost:3000/users/1').then((userdetails) => {
         this.user = userdetails.data;
-        this.username = userdetails.data.name;
       }, (userdetails) => {
         // Errors
       });

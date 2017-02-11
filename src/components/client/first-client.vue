@@ -38,6 +38,7 @@ export default {
       submitted: false,
       showname: true,
       showarea: false,
+      user: {},
       newClientData: {
         id: null,
         name: '',
@@ -46,7 +47,7 @@ export default {
       },
     };
   },
-  created() {
+  mounted() {
     // Get the client Count
     this.getClientCount();
         // focus first input
@@ -92,7 +93,8 @@ export default {
     },
     getUser() {
       this.$http.get('http://localhost:3000/users/1').then((userdetails) => {
-        this.newClientData.user_id = userdetails.data.id;
+        this.user = userdetails.data;
+        this.newClientData.user_id = user.id;
       }, (response) => {
         // Errors go here
       });

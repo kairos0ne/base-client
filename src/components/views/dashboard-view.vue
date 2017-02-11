@@ -83,6 +83,7 @@
         this.getAndSetAllProjects();
         this.getAndSetAllBriefs();
         this.$bus.$on('setViewProject', this.setProjectShow);
+        this.$bus.$on('setViewClient', this.setClientShow);
       },
       beforeDestroy() {
 
@@ -121,6 +122,10 @@
         setProjectShow() {
           this.showClient = false;
           this.showProject = true;
+        },
+        setClientShow() {
+          this.showClient = true;
+          this.showProject = false;
         },
       },
     };

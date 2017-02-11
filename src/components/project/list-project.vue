@@ -19,11 +19,8 @@ export default {
 
   data() {
     return {
-      ClientID: null,
-      ClientData: {},
       projectList: [],
       editToggel: true,
-      status: '',
     };
   },
   mounted() {
