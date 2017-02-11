@@ -39,7 +39,6 @@ export default {
     return {
       userDetails: {
         name: '',
-        username: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -57,11 +56,12 @@ export default {
 };
 </script>
 <style lang="sass?indentedSyntax">
+
 .vspace
   height: 20px
 #imgspace
   margin: 20px 0px 0px 0px
-        
 .registration_button
   margin: 30px 0px 0px 0px
+
 </style>
