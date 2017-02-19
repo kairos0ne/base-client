@@ -141,7 +141,7 @@ export default {
 #imgspace
   margin: 20px 0px 0px 0px
 .registration_button
-  margin: 50px 0px 80px 0px
+  margin: 50px 0px 30px 0px
 
 </style>
 

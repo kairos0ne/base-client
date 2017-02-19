@@ -23,4 +23,6 @@ export default {
 <style lang="sass?indentedSyntax">
 @import './sass/_reset.scss'
 @import './sass/base.sass'
+
+
 </style>

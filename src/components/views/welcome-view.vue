@@ -11,11 +11,11 @@
 </template>
 <style lang="sass?indentedSyntax">
 .space-bottom
-  marging-bottom: 100px
+  marging-bottom: 20px
 
 .main
   height: 100%
-  min-height 3200px
+
 
 </style>
 <script>
