@@ -10,6 +10,9 @@ Vue.use(Vuex);
 // This store can be linked to our app.
 
 const state = {
+  errors: {},
+  tokenHeader: {},
+  loggedInUser: {},
   onboarding: {
     client: {},
     project: {},
@@ -61,6 +64,16 @@ const mutations = {
   [types.SET_ALL_BRIEFS](state, briefs) {
     state.allBriefs = briefs;
   },
+  [types.SET_LOGGED_IN_USER](state, user) {
+    state.loggedInUser = user;
+  },
+  [types.SET_AUTH_TOKEN](state, token) {
+    state.tokenHeader = token;
+  },
+  [types.SET_ERRORS](state, error) {
+    state.errors = error;
+  },
+
 };
 
 export default new Vuex.Store({

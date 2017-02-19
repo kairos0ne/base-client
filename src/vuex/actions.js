@@ -40,3 +40,11 @@ export const setAllProjects = ({ commit }, projects) => {
 export const setAllBriefs = ({ commit }, briefs) => {
   commit('SET_ALL_BRIEFS', briefs);
 };
+
+export const setUser = ({ commit }, user) => {
+  commit('SET_LOGGED_IN_USER', user);
+};
+
+export const setAuthToken = ({ commit }, token) => {
+  commit('SET_AUTH_TOKEN', token);
+};

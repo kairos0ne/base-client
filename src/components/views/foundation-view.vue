@@ -3,7 +3,7 @@
         <foundation></foundation>
         <research></research>
         <persona></persona>
-        <architecture></architecture>
+        <architecture class="endofpage"></architecture>
     </div>
 </template>
 <script>
@@ -27,4 +27,9 @@
     },
 };
 </script>
-    
+
+<style lang="sass?indentedSyntax">
+.endofpage
+  margin: 0px 0px 80px 0px
+
+</style>

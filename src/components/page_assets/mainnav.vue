@@ -12,23 +12,18 @@
                         <span class="icon-bar"></span>
                     </button>
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="">
-                        <img class="logo" src="static/base_logo.svg">
-                    </a>
+                    <router-link tag="div" to="/"><img class="logo" src="static/base_logo.svg"></router-link>
                 </div>
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                       <li><a href=""> <router-link tag="li" to="/foundation">Foundation</router-link></a></li>
-                        <li><a href=""><router-link tag="li" to="/dashboard">Dashboard</router-link></a></li>
-                        <li><a href=""><router-link tag="li" to="/introduction">Introduction</router-link></a></li>
-                        <li><a href=""><router-link tag="li" to="/Pricing">Pricing</router-link></a></li>
-                    </ul>
+                    <userlinksin v-show="! client"></userlinksin>
+                    <userlinksout v-show="user"></userlinksout>
+                    <userlinksfirst v-show="client && user"></userlinksfirst>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
 
-                        <li><a href=""><router-link tag="li" to="/register"><i class="fa fa-handshake-o fa-md"></i>&nbsp;Register</router-link></a></li>
+                        <li class="register-link"><a href=""><router-link tag="li" to="/register"><i class="fa fa-handshake-o fa-md"></i>&nbsp;Register</router-link></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
@@ -52,32 +47,55 @@
 .logo
   max-height: 35px
   padding-bottom: 2px
+  display: block
+  margin: 10px
+  
 
 .navbar-default
   min-height: 55px
 
 .navbar-brand 
   padding: 10px 0px 0px 10px
+  display: block
 
 .navbar-nav
   li
     a
-      padding: 26px 10px 0px 10px 
+      padding: 25px 10px 0px 10px 
+      font-wight: 100
 
-    
+.nav-links
+  margin: 0px 0px 0px 20px
+
+@media screen and (max-width:766px) 
+  .register-link
+    padding-left: 35px
+
 </style>
 <script>
+import userlinksin from './user-links-in';
+import userlinksout from './user-links-out';
+import userlinksfirst from './user-links-first';
 
 export default {
   data() {
     return {
     };
   },
+  components: {
+    userlinksin,
+    userlinksout,
+    userlinksfirst,
+  },
   mounted() {
   },
-  props: {
-  },
-  events: {
+  computed: {
+    client() {
+      return this.$store.getters.getClientFromOnboarding;
+    },
+    user() {
+      return this.$store.getters.getLoggedInUser;
+    },
   },
   methods: {
   },

@@ -29,26 +29,9 @@ export default {
       showClient: true,
       showProject: false,
       showBrief: false,
-      user: {},
-      clientRest: {
-        user: {},
-        currentClient: {},
-        clientProjects: [],
-      },
-      projectRest: {
-        parentClient: {},
-        currentProject: {},
-        projectBriefs: [],
-      },
-      briefRest: {
-        parentProject: {},
-        currentBrief: {},
-        briefFeatures: [],
-      },
     };
   },
   mounted() {
-    this.getUser();
     this.$bus.$on('setClientOnboarding', this.clientAdded);
     this.$bus.$on('setProjectOnboarding', this.projectAdded);
     this.$bus.$on('setBriefOnboarding', this.briefAdded);
@@ -63,28 +46,18 @@ export default {
     firstbrief,
     firstproject,
   },
-  methods: {
-    getUser() {
-      this.$http.get('http://localhost:3000/users/1').then((userdetails) => {
-        this.user = userdetails.data;
-      }, (userdetails) => {
-        // Errors
-      });
+  computed: {
+    user() {
+      return this.$store.getters.getLoggedInUser;
     },
+  },
+  methods: {
     clientAdded(client) {
-      // The mutator is not storing the payload... debug
       // Set the show client attribute to false - hide the client details section
       this.showClient = false;
       // Set show project to true - show the project details
       this.showProject = true;
       // Set the user on the REST object
-      this.clientRest.user = this.user;
-      // Set the client on client REST
-      this.clientRest.currentClient = client;
-      // Dispatch a commit using an action to the REST Vuex State clientREST
-      const request = this.clientRest;
-      console.log(request);
-      this.$store.dispatch('setClientRest', request);
     },
     projectAdded(project) {
       // Set show project to false
@@ -92,10 +65,6 @@ export default {
       // Set show client to true
       this.showBrief = true;
       // Set the current client on projectRest
-      this.projectRest.parentClient = this.clientRest.currentClient;
-      this.projectRest.currentProject = project;
-      const request = this.projectRest;
-      this.$store.dispatch('setProjectRest', request);
     },
     briefAdded(brief) {
       this.showProject = false;

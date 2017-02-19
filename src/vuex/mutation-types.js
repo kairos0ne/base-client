@@ -33,3 +33,9 @@ export const SET_ALL_CLIENTS = 'SET_ALL_CLIENTS';
 export const SET_ALL_PROJECTS = 'SET_ALL_PROJECTS';
 
 export const SET_ALL_BRIEFS = 'SET_ALL_BRIEFS';
+
+export const SET_LOGGED_IN_USER = 'SET_LOGGED_IN_USER';
+
+export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
+
+export const SET_ERRORS = 'SET_ERRORS';

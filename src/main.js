@@ -9,6 +9,7 @@ import dashboard from './components/views/dashboard-view';
 import introduction from './components/views/introduction-view';
 import authentication from './components/views/register-view';
 import pricing from './components/views/pricing-view';
+import clientkey from './components/views/client-key';
 
 const VueRouter = require('vue-router');
 
@@ -24,8 +25,6 @@ const VueResource = require('vue-resource');
 
 Vue.use(VueResource);
 
-Vue.http.headers.common.Authorization = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODY4NDUyMjZ9.58IKWn0MsZJYeprNsfkMFxXpB6L4i1-90uBmgW7q96c';
-
 require('flexboxgrid');
 
 require('bootstrap');
@@ -37,6 +36,8 @@ const routes = [
   { path: '/introduction', component: introduction },
   { path: '/register', component: authentication },
   { path: '/pricing', component: pricing },
+  { path: '/clientkey', component: clientkey },
+  // { path: '/error/:errorId', name: 'error', component: error },
 ];
 
 const router = new VueRouter({
@@ -47,7 +48,7 @@ const bus = new Vue();
 Vue.prototype.$bus = bus;
 
 /* eslint-disable no-new */
-new Vue({
+const vm = new Vue({
   router,
   store,
   components: {

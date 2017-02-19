@@ -27,6 +27,13 @@
   border-right: 1px 
   height: 100%
 
+.fixed-bottom
+  position: absolute
+  right: 0
+  bottom: 0
+  left: 0
+  padding: 5px 0px 0px 20px
+
 
 
 </style>

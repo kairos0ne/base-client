@@ -1,12 +1,13 @@
 <template>
 <div>
 <!-- Start Main Container -->
-  <div class="row">
+  <div id="main-container" class="row">
     <div class="col-lg-2
                 col-md-2
               ">
         <div id="sidebar" class="box sidebar">
           <listclient></listclient>
+          
         </div>
     </div>
     <div class="col-lg-2
@@ -23,24 +24,32 @@
                 col-sm-12
                 col-xs-12
               ">    
-        <div class="box">
+        <div id="main-content" class="box">
           <showclient v-show="showClient"></showclient>
           <showproject v-show="showProject"></showproject>
         </div>
     </div>
+    <div class="fixed-bottom">f</div>
 </div>
 </template>
 <style lang="sass?indentedSyntax">
-.box
-  padding: 0px 10px 0px 10px
+
+#main-container
+  height: 100%
 
 #sidebar     
-  height: 100%
   border-right: 1px solid #999999
 
 #middle-bar
-  height: 100%
   border-right: 1px solid #999999
+
+#main-content
+
+.fixed-bottom
+  position: absolute
+  right: 0
+  bottom: 0
+  left: 0
   
 </style>
 <script>

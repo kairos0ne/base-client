@@ -38,7 +38,6 @@ export default {
       submitted: false,
       showname: true,
       showarea: false,
-      user: {},
       newClientData: {
         id: null,
         name: '',
@@ -47,11 +46,18 @@ export default {
       },
     };
   },
+  computed: {
+    user() {
+      return this.$store.getters.getLoggedInUser;
+    },
+    authToken() {
+      return this.$store.getters.getAuthToken;
+    },
+  },
   mounted() {
     // Get the client Count
     this.getClientCount();
-        // focus first input
-    this.getUser();
+    this.setClientUserId();
   },
   methods: {
     setNameAdded() {
@@ -61,16 +67,19 @@ export default {
     onFormSubmit(e) {
       // Prevent default action
       e.preventDefault();
+      this.setClientUserId();
       // Run the client function to ensure that the latest is current
       this.getClientCount();
+      // Set the user ID of the newClientData
+      this.newClientData.id = this.user.id;
+      console.log(this.newClientData);
       // Store client in in onboarding vuex state
       const client = this.newClientData;
       // Set the Vuex state on the client
       this.$store.dispatch('setClientInOnboarding', client);
-      const request = this.newClientData;
-      this.submitted = true;
       this.$bus.$emit('setClientOnboarding', client);
       // set both to false
+      this.submitted = true;
       this.showarea = false;
       this.showname = true;
       // reset inputs
@@ -81,22 +90,29 @@ export default {
         user_id: null,
       };
       // send ajax request
-      this.$http.post('http://localhost:3000/clients', request);
-    },
-    getClientCount() {
-      this.$http.get('http://localhost:3000/clientcount').then((clientnew) => {
-          // Set the new client id with a count + 1
-        this.newClientData.id = clientnew.data + 1;
-      }, (response) => {
-        // Errors go here
+      console.log(this.authToken);
+      this.$nextTick(() => {
+        this.$http.post('http://localhost:3000/clients', client, { headers: { Authorization: this.authToken.auth_token } }).then((response) => {
+          console.log(client);
+          console.log(response.body);
+        });
       });
     },
-    getUser() {
-      this.$http.get('http://localhost:3000/users/1').then((userdetails) => {
-        this.user = userdetails.data;
-        this.newClientData.user_id = user.id;
-      }, (response) => {
-        // Errors go here
+    getClientCount() {
+      this.$nextTick(() => {
+        this.$http.get('http://localhost:3000/clients/count', { headers: { Authorization: this.authToken.auth_token } }).then((request) => {
+        // Set the new client id with a count + 1
+          this.newClientData.id = request.data + 1;
+        }, (request) => {
+      // Errors go here
+        });
+      });
+    },
+    setClientUserId() {
+      const userid = this.user.id;
+      this.$nextTick(() => {
+        console.log(userid);
+        this.newClientData.id = this.user.id;
       });
     },
   },

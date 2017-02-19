@@ -97,7 +97,7 @@ export default {
       this.$http.post('http://localhost:3000/projects', request);
     },
     getProjectCount() {
-      this.$http.get('http://localhost:3000/projectcount').then((projectnew) => {
+      this.$http.get('http://localhost:3000/projects/count').then((projectnew) => {
         this.newProjectData.id = projectnew.data + 1;
       }, (projectnew) => {
         // Errors

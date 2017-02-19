@@ -20,13 +20,21 @@
     </div>
 </template>
 <style lang="sass?indentedSyntax">
+
 .dropzone
-  width: 100%
   height: 100px
   border: 1px dashed #999
 .dz-message
-  padding: 40px 0px 40px 300px 
+  text-align: center
+  padding: 40px 0px 40px 0px
 
+@media screen and (max-width:412px) 
+  .dropzone
+    height: 50px
+    border: 1px dashed #999
+  .dz-message
+    text-align: center 
+    padding: 20px 0px 20px 0px
 
 </style>
 <script>

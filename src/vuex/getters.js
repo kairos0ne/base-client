@@ -25,3 +25,9 @@ export const getAllClients = state => state.allClients;
 export const getAllProjects = state => state.allProjects;
 
 export const getAllBriefs = state => state.allBriefs;
+
+export const getLoggedInUser = state => state.loggedInUser;
+
+export const getAuthToken = state => state.tokenHeader;
+
+export const setErrors = state => state.errors;
