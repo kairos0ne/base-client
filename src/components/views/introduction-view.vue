@@ -1,18 +1,27 @@
 <template>
     <div id="dashboard">
         <div id="wrapper">
-            <div class="container">
+            <div class="container main-body">
                 <div id="what" class="page-header col-lg-12 col-md-12 col-sm-12 ">
                     <h1>Welcome {{ user.name }}.<small> I see this is your first time on the site.  </small></h1>
                     <p>I hope the next couple of steps help you define a strategic approach to developing online tools. Before we get started there are a few details we'll need to setup. It won't take a minute, follow the steps.</p>
                 </div>
-            </div>
-            <firstclient v-if="showClient"></firstclient>
-            <firstproject v-if="showProject" :onboadring="true"></firstproject>
-            <firstbrief v-if="showBrief"></firstbrief>
+                <div class="main-content">
+                  <firstclient v-if="showClient"></firstclient>
+                  <firstproject v-if="showProject" :onboadring="true"></firstproject>
+                  <firstbrief v-if="showBrief"></firstbrief>
+                </div>
+            </div>  
         </div>
     </div>
 </template>
+<style lang="sass?indentedSyntax">
+.main-content
+  margin: 0px 0px 100px 0px 
+
+.main-body
+  height: 100%
+</style>
 <script>
 /* eslint-disable no-unused-vars*/
 /* eslint-disable no-undef*/

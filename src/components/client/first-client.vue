@@ -4,8 +4,8 @@
             <div class="negative-space">
             </div>
             <form method="POST" action="" role="form" v-show="! submitted">
-                <div class="form-group col-lg-offset-2" v-show="showname">
-                    <div class="col-md-8 col-lg-8 col-sm-12  right-inner-addon pull-left">
+                <div class="form-group" v-show="showname">
+                    <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
                         <div class="left-inner-addon pullright">
                             <img role="img" src="/static/openbracket.svg"/>
                             <input id="clientInput" type="text" class="form-control custom_text_area" name="name" v-model="newClientData.name" placeholder="Client name" v-on:keyup.enter="setNameAdded" autocomplete="off"/>
@@ -13,8 +13,8 @@
                         <img role="img" src="/static/closebracket.svg"/>
                     </div>
                 </div>
-                <div class="form-group col-lg-offset-2" v-show="showarea">
-                    <div class="col-md-8 col-lg-8 col-sm-12  right-inner-addon pull-left">
+                <div class="form-group" v-show="showarea">
+                    <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
                         <div class="left-inner-addon pullright">
                             <img role="img" src="/static/openbracket.svg"/>
                             <input  type="text" class="form-control custom_text_area" name="business_area" id="business_area" v-model="newClientData.business_area" placeholder="What is the core bsuiness focus" v-on:keyup.enter="onFormSubmit" autocomplete="off"/>
