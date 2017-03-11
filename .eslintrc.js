@@ -14,6 +14,11 @@ module.exports = {
   plugins: [
     'html'
   ],
+  'globals': {
+    'window': true,
+    'sessionStorage': true,
+    'localStorage': true,
+  },
   // check if imports actually resolve
   'settings': {
     'import/resolver': {

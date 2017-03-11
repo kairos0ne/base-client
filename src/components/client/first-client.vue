@@ -4,25 +4,16 @@
             <div class="negative-space">
             </div>
             <form method="POST" action="" role="form" v-show="! submitted">
-                <div class="form-group" v-show="showname">
-                    <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
-                        <div class="left-inner-addon pullright">
-                            <img role="img" src="/static/openbracket.svg"/>
-                            <input id="clientInput" type="text" class="form-control custom_text_area" name="name" v-model="newClientData.name" placeholder="Client name" v-on:keyup.enter="setNameAdded" autocomplete="off"/>
-                        </div>
-                        <img role="img" src="/static/closebracket.svg"/>
-                    </div>
+                <div class="col-md-11 col-lg-11 col-sm-12  right-inner-addon pull-left">
+                  <ui-textbox floating-label label="Client Name" placeholder="Enter your name" v-model="newClientData.name"></ui-textbox>  
                 </div>
-                <div class="form-group" v-show="showarea">
-                    <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
-                        <div class="left-inner-addon pullright">
-                            <img role="img" src="/static/openbracket.svg"/>
-                            <input  type="text" class="form-control custom_text_area" name="business_area" id="business_area" v-model="newClientData.business_area" placeholder="What is the core bsuiness focus" v-on:keyup.enter="onFormSubmit" autocomplete="off"/>
-                        </div>
-                        <img role="img" src="/static/closebracket.svg"/>
-                    </div>
+                </br>
+                <div class="col-md-11 col-lg-11 col-sm-12  right-inner-addon pull-left">    
+                  <ui-textbox floating-label label="Client Business Area" placeholder="Enter your name" v-model="newClientData.business_area"></ui-textbox>
                 </div>
+               </br>
             </form>
+            <button type="button" class="first-client-btn btn btn-sm btn-default" @click.prevent="onFormSubmit">Submit</button>  
         </div>
     </div>
 </template>
@@ -30,16 +21,14 @@
 /* eslint-disable no-unused-vars*/
 /* eslint-disable no-undef*/
 /* eslint-disable prefer-template*/
+
 import { setClientInOnboarding } from './../../vuex/actions';
 
 export default {
   data() {
     return {
       submitted: false,
-      showname: true,
-      showarea: false,
       newClientData: {
-        id: null,
         name: '',
         business_area: '',
         user_id: null,
@@ -47,17 +36,14 @@ export default {
     };
   },
   computed: {
-    user() {
-      return this.$store.getters.getLoggedInUser;
+    userId() {
+      return sessionStorage.getItem('UserId');
     },
-    authToken() {
-      return this.$store.getters.getAuthToken;
+    token() {
+      return sessionStorage.getItem('Authorisation');
     },
   },
   mounted() {
-    // Get the client Count
-    this.getClientCount();
-    this.setClientUserId();
   },
   methods: {
     setNameAdded() {
@@ -67,22 +53,17 @@ export default {
     onFormSubmit(e) {
       // Prevent default action
       e.preventDefault();
-      this.setClientUserId();
-      // Run the client function to ensure that the latest is current
-      this.getClientCount();
       // Set the user ID of the newClientData
-      this.newClientData.id = this.user.id;
-      console.log(this.newClientData);
+      this.newClientData.user_id = this.userId;
       // Store client in in onboarding vuex state
       const client = this.newClientData;
-      // Set the Vuex state on the client
-      this.$store.dispatch('setClientInOnboarding', client);
+      // Set the project show to false on the parent component
       this.$bus.$emit('setClientOnboarding', client);
-      // set both to false
+      // set both to false to hide the each
       this.submitted = true;
       this.showarea = false;
       this.showname = true;
-      // reset inputs
+      // reset inputs to clear data for collection
       this.newClientData = {
         id: null,
         name: '',
@@ -90,32 +71,33 @@ export default {
         user_id: null,
       };
       // send ajax request
-      console.log(this.authToken);
       this.$nextTick(() => {
-        this.$http.post('http://localhost:3000/clients', client, { headers: { Authorization: this.authToken.auth_token } }).then((response) => {
-          console.log(client);
-          console.log(response.body);
+        this.$http.post('http://localhost:3000/clients', client, { headers: { Authorization: this.token } }).then((response) => {
+          // Set the Vuex state on the client
+          this.$store.dispatch('setClientInOnboarding', response.body);
         });
-      });
-    },
-    getClientCount() {
-      this.$nextTick(() => {
-        this.$http.get('http://localhost:3000/clients/count', { headers: { Authorization: this.authToken.auth_token } }).then((request) => {
-        // Set the new client id with a count + 1
-          this.newClientData.id = request.data + 1;
-        }, (request) => {
-      // Errors go here
-        });
-      });
-    },
-    setClientUserId() {
-      const userid = this.user.id;
-      this.$nextTick(() => {
-        console.log(userid);
-        this.newClientData.id = this.user.id;
       });
     },
   },
 };
 
 </script>
+<style lang="sass?indentedSyntax">
+  .ui-textbox
+    font-size: 15px
+    margin: 10px
+
+  .first-client-btn
+    margin: 20px 0px 0px 10px
+
+  .ui-textbox__input 
+    font-size: 1.5rem
+    height: 3rem
+
+  .ui-textbox__textarea 
+    font-size: 1.5rem
+    height: 3rem
+  
+  .ui-textbox__label-text
+    font-size: 1.5rem
+</style>

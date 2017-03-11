@@ -3,25 +3,14 @@
         <div class="container">
             <div class="negative-space"></div>
             <form id="addbriefform" action="" method="POST" role="form" v-show="! submitted">
-                <div class="form-group col-lg-offset-2" v-show=" ! overviewsubmitted">
-                    <div class="col-md-8 col-lg-8 col-sm-12  right-inner-addon pull-left">
-                    <div class="left-inner-addon pullright">
-                        <img role="img" src="/static/openbracket.svg"/>
-                    <input type="text" class="form-control custom_text_area" name="Overview" id="overview" v-model="newBriefData.overview" placeholder="What is the background to the brief?" v-on:keyup.enter="setOverviewAdded" autocomplete="off"/>
-                        </div>
-                        <img role="img" src="/static/closebracket.svg"/>
-                    </div>
+                <div class="col-md-8 col-lg-11 col-sm-12  right-inner-addon pull-left">    
+                  <ui-textbox floating-label label="Brief Name" placeholder="Enter overview to the brief" v-model="newBriefData.overview"></ui-textbox>  
                 </div>
-                <div class="form-group col-lg-offset-2" v-show=" overviewsubmitted">
-                    <div class="col-md-8 col-lg-8 col-sm-12  right-inner-addon pull-left">
-                        <div class="left-inner-addon pullright">
-                            <img role="img" src="/static/openbracket.svg"/>
-                    <input type="text" class="form-control custom_text_area" name="Objective" id="objective" v-model="newBriefData.objective" placeholder="What are you trying to achieve with the platform?" v-on:keyup.enter="onFormSubmit" autocomplete="off"/>
-                        </div>
-                        <img role="img" src="/static/closebracket.svg"/>
-                    </div>
-                </div>
-            </form> 
+                <div class="col-md-8 col-lg-11 col-sm-12  right-inner-addon pull-left">
+                  <ui-textbox floating-label label="Project Name" placeholder="Enter the project name" v-model="newBriefData.objective"></ui-textbox>  
+                </div>     
+            </form>
+             <button type="button" class="first-client-btn btn btn-sm btn-default" @click.prevent="onFormSubmit">Submit</button>   
         </div>
     </div>
 </template>
@@ -39,9 +28,7 @@ export default {
       submitted: false,
       overviewsubmitted: false,
       objectivesubmitted: false,
-      parentProject: {},
       newBriefData: {
-        id: null,
         overview: '',
         objective: '',
         project_id: null,
@@ -49,11 +36,14 @@ export default {
     };
   },
   mounted() {
-    // Get the total number of briefs
-    this.getBriefCount();
-    // Listen for the project set event on the add-project component
-    this.parentProject = this.$store.getters.getProjectFromOnboarding;
-    this.newBriefData.project_id = this.parentProject.id;
+  },
+  computed: {
+    parentProject() {
+      return this.$store.getters.getProjectFromOnboarding;
+    },
+    token() {
+      return sessionStorage.getItem('Authorisation');
+    },
   },
   methods: {
     setOverviewAdded() {
@@ -62,12 +52,10 @@ export default {
     onFormSubmit(e) {
       // Prevent default action
       e.preventDefault();
-      // update the brief count
-      this.getBriefCount();
+      // Set the project id
+      this.newBriefData.project_id = this.parentProject.id;
       // initialise a variable to assign the new data
       const brief = this.newBriefData;
-      // Set the Vuex onboarding state
-      this.$store.dispatch('setBriefInOnboarding', brief);
       this.$bus.$emit('setBriefOnboarding', brief);
       // Set a request variable to hold the data
       const request = this.newBriefData;
@@ -75,26 +63,17 @@ export default {
       this.submitted = true;
       // reset inputs
       this.newBriefData = {
-        id: null,
         overview: '',
         objective: '',
         project_id: null,
       };
       // send ajax request with the request data
-      console.log(request);
-      this.$http.post('http://localhost:3000/briefs', request);
+      this.$http.post('http://localhost:3000/briefs', request, { headers: { Authorization: this.token } }).then((response) => {
+        // Set the Vuex onboarding state
+        this.$store.dispatch('setBriefInOnboarding', response.body);
+      });
       // Redirect user to the dashboard
       this.$router.push('/dashboard');
-    },
-    getBriefCount() {
-      // Ajax request to api route for briefcount
-      // NOTE : THIS SHOULD BE CHANGED TO USE A STATE WITH VUEX
-      this.$http.get('http://localhost:3000/briefcount').then((briefnew) => {
-        // get the request data
-        this.newBriefData.id = briefnew.data;
-      }, (briefnew) => {
-        // Errors
-      });
     },
   },
 };

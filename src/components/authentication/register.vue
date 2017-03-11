@@ -1,67 +1,36 @@
 <template>
-<div>
-      <div class="container">
-        <div v-show="showReqister" class="col-lg-12 col-md-12">
-          <form class="registrationform"  method="POST" action="" role="form">
-                <div class="form-group">
-                    <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
-                    <div class="vspace"></div>
-                        <div class="left-inner-addon pullright">
-                            <img role="img" src="/static/openbracket.svg"/>
-                            <input id="nameInput" required  type="text" class="form-control custom_text_area" name="name" v-model="userDetails.name" placeholder="Name" autocomplete="off"/>
-                        </div>
-                        <img id="imgspace" role="img" src="/static/closebracket.svg"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
-                    <div class="vspace"></div>
-                        <div class="left-inner-addon pullright">
-                            <img role="img" src="/static/openbracket.svg"/>
-                            <input id="nameInput" required  type="text" class="form-control custom_text_area" name="username" v-model="userDetails.username" placeholder="User Name" autocomplete="off"/>
-                        </div>
-                        <img id="imgspace" role="img" src="/static/closebracket.svg"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
-                      <div class="vspace"></div>
-                        <div class="left-inner-addon pullright">
-                            <img role="img" src="/static/openbracket.svg"/>
-                            <input id="emailInput" required type="email" class="form-control custom_text_area" name="email" v-model="userDetails.email" placeholder="email" autocomplete="off"/>
-                        </div>
-                        <img id="imgspace" role="img" src="/static/closebracket.svg"/>
-                    </div>
-                </div>
-                <div class="form-group ">
-                    <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
-                    <div class="vspace"></div>
-                        <div class="left-inner-addon pullright">
-                            <img role="img" src="/static/openbracket.svg"/>
-                            <input id="passwordInput" required type="password" class="form-control custom_text_area" name="password" v-model="userDetails.password" placeholder="Password" v-on:keyup.enter="setDetailsAdded" autocomplete="off"/>
-                        </div>
-                        <img id="imgspace" role="img" src="/static/closebracket.svg"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
-                    <div class="vspace"></div>
-                        <div class="left-inner-addon pullright">
-                            <img role="img" src="/static/openbracket.svg"/>
-                            <input id="passwordConfirmationInput" required  type="password" class="form-control custom_text_area" name="password_confirmation"  v-model="userDetails.password_confirmation" placeholder="Password Confirmation" v-on:keyup.enter="setDetailsAdded" autocomplete="off"/>
-                        </div>
-                        <img id="imgspace" role="img" src="/static/closebracket.svg"/>
-                    </div>
-                    <div class="validations">{{passwordMessage}}</div>
-                </div>
-          </form>
-        </div> 
-      </div>
-      <div class="container">
-          <button v-show="showReqister" type="button" class="btn btn-md btn-default registration_button" v-on:click="setDetailsAdded">Submit</button>
-          <div v-show="showErrors">{{errorResponse}} TEST</div>
-        </div> 
- </div>     
+  <div>
+    <div class="container">
+      <div class="col-lg-12 col-md-12">
+        <form class="registrationform"  method="POST" action="" role="form">
+          <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
+            <ui-textbox required="true" floating-label label="Name" placeholder="Name" v-model="userDetails.name"></ui-textbox>    
+          </div>
+                
+          <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
+            <ui-textbox floating-label label="User Name" placeholder="User Name" v-model="userDetails.username"></ui-textbox> 
+          </div>
+          
+          <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
+            <ui-textbox type="email" floating-label label="Email" placeholder="Email" v-model="userDetails.email"></ui-textbox> 
+          </div>
+            
+          <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
+            <ui-textbox type="password" floating-label label="Password" placeholder="Password" v-model="userDetails.password"></ui-textbox> 
+          </div>
+                  
+          <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
+            <ui-textbox type="password" floating-label label="Password Confirmation" placeholder="Password Confirmation" v-model="userDetails.password_confirmation"></ui-textbox> 
+          </div>
+          <div class="validations">{{passwordMessage}}</div>
+          </div>
+        </form>
+    </div>
+    <div class="container">
+      <button type="button" class="btn btn-md btn-default registration_button" v-on:click="setDetailsAdded">Submit</button>
+      <div v-show="showErrors">{{errorResponse}} TEST</div>
+    </div> 
+  </div>     
 </template>
 
 <script>
@@ -72,7 +41,6 @@ export default {
   name: 'Register',
   data() {
     return {
-      SuccessResponse: {},
       errorResponse: {},
       showReqister: true,
       showErrors: false,
@@ -98,8 +66,6 @@ export default {
       const request = this.userDetails;
       // Post the user to the users api endpoint
       this.$http.post('http://localhost:3000/users', request).then((response) => {
-        // get status and log to console
-        console.log(response.status);
         // get body data (user)
         const user = response.body;
         // Set the authentication request data => email && password
@@ -110,7 +76,9 @@ export default {
         // Post the data to the endpoint
         this.$http.post('http://localhost:3000/authenticate', authentication).then((authtoken) => {
           const token = authtoken.body;
-          this.$store.dispatch('setAuthToken', token);
+          this.$store.dispatch('setAuthToken', token.auth_token);
+          sessionStorage.setItem('Authorisation', token.auth_token);
+          sessionStorage.setItem('UserId', user.id);
         });
         // Set the user in the VUEX STATE for use in onboarding
         this.$store.dispatch('setUser', user);
@@ -138,8 +106,10 @@ export default {
 
 .vspace
   height: 20px
+
 #imgspace
   margin: 20px 0px 0px 0px
+
 .registration_button
   margin: 50px 0px 30px 0px
 

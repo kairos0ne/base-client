@@ -1,7 +1,7 @@
 <template>
 <div>
 <!-- Start Main Container -->
-  <div id="main-container" class="row">
+  <div>
     <div class="col-lg-2
                 col-md-2
               ">
@@ -29,29 +29,8 @@
           <showproject v-show="showProject"></showproject>
         </div>
     </div>
-    <div class="fixed-bottom">f</div>
 </div>
 </template>
-<style lang="sass?indentedSyntax">
-
-#main-container
-  height: 100%
-
-#sidebar     
-  border-right: 1px solid #999999
-
-#middle-bar
-  border-right: 1px solid #999999
-
-#main-content
-
-.fixed-bottom
-  position: absolute
-  right: 0
-  bottom: 0
-  left: 0
-  
-</style>
 <script>
 /* eslint-disable no-unused-vars*/
 /* eslint-disable no-undef*/
@@ -98,38 +77,38 @@
         this.$bus.$on('setViewProject', this.setProjectShow);
         this.$bus.$on('setViewClient', this.setClientShow);
       },
+      computed: {
+        token() {
+          return sessionStorage.getItem('Authorisation');
+        },
+      },
       beforeDestroy() {
-
       },
       methods: {
         setInitialState() {
-          this.$http.get('http://localhost:3000/clients/1').then((item) => {
+          this.$http.get('http://localhost:3000/clients/1', { headers: { Authorization: this.token } }).then((item) => {
             this.client = item.data;
             this.$store.dispatch('setClientRest', item.data);
           }, (item) => {
             // errors
-            console.log(errors);
           });
         },
         getAndSetAllClients() {
-          this.$http.get('http://localhost:3000/clients').then((clients) => {
+          this.$http.get('http://localhost:3000/clients', { headers: { Authorization: this.token } }).then((clients) => {
             this.$store.dispatch('setAllClients', clients);
           }, (clients) => {
-            console.log(errors);
           });
         },
         getAndSetAllProjects() {
-          this.$http.get('http://localhost:3000/projects').then((projects) => {
+          this.$http.get('http://localhost:3000/projects', { headers: { Authorization: this.token } }).then((projects) => {
             this.$store.dispatch('setAllProjects', projects);
           }, (projects) => {
-            console.log(errors);
           });
         },
         getAndSetAllBriefs() {
-          this.$http.get('http://localhost:3000/briefs').then((briefs) => {
+          this.$http.get('http://localhost:3000/briefs', { headers: { Authorization: this.token } }).then((briefs) => {
             this.$store.dispatch('setAllBriefs', briefs);
           }, (briefs) => {
-            console.log(errors);
           });
         },
         setProjectShow() {
@@ -143,3 +122,20 @@
       },
     };
 </script>
+<style lang="sass?indentedSyntax">
+
+#sidebar     
+  border-right: 1px solid #999999
+
+#middle-bar
+  border-right: 1px solid #999999
+
+#main-content
+
+.fixed-bottom
+  position: absolute
+  right: 0
+  bottom: 0
+  left: 0
+  
+</style>

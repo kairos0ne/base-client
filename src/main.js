@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars*/
 /* eslint-disable no-undef*/
 import Vue from 'vue';
+import KeenUI from 'keen-ui';
 import App from './App';
 import store from './vuex/store';
 import welcome from './components/views/welcome-view';
@@ -14,6 +15,8 @@ import clientkey from './components/views/client-key';
 const VueRouter = require('vue-router');
 
 Vue.use(VueRouter);
+
+Vue.use(KeenUI);
 
 const Vuex = require('vuex');
 
