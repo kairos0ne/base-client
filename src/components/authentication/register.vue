@@ -4,7 +4,7 @@
       <div class="col-lg-12 col-md-12">
         <form class="registrationform"  method="POST" action="" role="form">
           <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
-            <ui-textbox required="true" floating-label label="Name" placeholder="Name" v-model="userDetails.name"></ui-textbox>    
+            <ui-textbox  floating-label label="Name" placeholder="Name" v-model="userDetails.name"></ui-textbox>    
           </div>
                 
           <div class="col-md-10 col-lg-10 col-sm-12  right-inner-addon pull-left">
@@ -27,7 +27,8 @@
         </form>
     </div>
     <div class="container">
-      <button type="button" class="btn btn-md btn-default registration_button" v-on:click="setDetailsAdded">Submit</button>
+      <button type="button" class="btn btn-md btn-default registration_button" v-on:click="setDetailsAdded">Register</button>
+      <button type="button" class="btn btn-md btn-default registration_button" >Login</button>
       <div v-show="showErrors">{{errorResponse}} TEST</div>
     </div> 
   </div>     

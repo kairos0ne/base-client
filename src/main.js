@@ -8,7 +8,8 @@ import welcome from './components/views/welcome-view';
 import foundation from './components/views/foundation-view';
 import dashboard from './components/views/dashboard-view';
 import introduction from './components/views/introduction-view';
-import authentication from './components/views/register-view';
+import registration from './components/views/register-view';
+import login from './components/views/login-view';
 import pricing from './components/views/pricing-view';
 import clientkey from './components/views/client-key';
 
@@ -37,7 +38,8 @@ const routes = [
   { path: '/dashboard', component: dashboard },
   { path: '/foundation', component: foundation },
   { path: '/introduction', component: introduction },
-  { path: '/register', component: authentication },
+  { path: '/register', component: registration },
+  { path: '/login', component: login },
   { path: '/pricing', component: pricing },
   { path: '/clientkey', component: clientkey },
   // { path: '/error/:errorId', name: 'error', component: error },
@@ -59,8 +61,9 @@ const vm = new Vue({
     dashboard,
     foundation,
     introduction,
-    authentication,
+    registration,
     pricing,
+    login,
   },
   el: '#app',
   render: h => h(App),

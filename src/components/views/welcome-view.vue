@@ -9,15 +9,7 @@
       <register class="space-bottom"></register>
 	</div>
 </template>
-<style lang="sass?indentedSyntax">
-.space-bottom
-  marging-bottom: 20px
 
-.main
-  height: 100%
-
-
-</style>
 <script>
 import register from '../authentication/register';
 
@@ -47,3 +39,12 @@ export default {
   },
 };
 </script>
+
+<style lang="sass?indentedSyntax">
+.space-bottom 
+  marging-bottom: 20px
+
+.main
+  height: 100%
+
+</style>

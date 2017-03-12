@@ -17,25 +17,17 @@
                 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <userlinksin v-show="! client"></userlinksin>
-                    <userlinksout v-show="user"></userlinksout>
-                    <userlinksfirst v-show="client && user"></userlinksfirst>
+                    <userlinksin v-show="token"></userlinksin>
+                    <userlinksout v-show="!token"></userlinksout>
+                    <userlinksfirst v-show="userId"></userlinksfirst>
                     
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-                        <li class="register-link"><a href=""><router-link tag="li" to="/register"><i class="fa fa-handshake-o fa-md"></i>&nbsp;Register</router-link></a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false">
-                        <!-- Add Authed User as link -->    
-                            <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href=""><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                                <li><a href=""><i class="fa fa-btn fa-sign-out"></i>Account</a></li>
-                            </ul>
-                        </li>
+                        <li v-show="!token" class="register-link"><a href=""><router-link tag="li" to="/register"><i class="fa fa-handshake-o fa-md"></i>&nbsp;Register</router-link></a></li>
+                        <li v-show="!token" class="register-link"><a href=""><router-link tag="li" to="/login">|&nbsp;&nbsp;&nbsp;Login</router-link></a></li>
+                        <li v-show="token" class="register-link" @click="logout()"><a href=""><router-link tag="li" to="/login">Logout</router-link></a></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -65,11 +57,21 @@ export default {
     client() {
       return this.$store.getters.getClientFromOnboarding;
     },
-    user() {
-      return this.$store.getters.getLoggedInUser;
+    userId() {
+      return sessionStorage.getItem('UserId');
+    },
+    token() {
+      return sessionStorage.getItem('Authorisation');
     },
   },
   methods: {
+    logout() {
+      const token = null;
+      sessionStorage.clear();
+      this.$router.push('/');
+      this.$store.dispatch('setAuthToken', token);
+      window.location.reload(true);
+    },
   },
 };
 
