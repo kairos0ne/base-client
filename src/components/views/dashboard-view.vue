@@ -95,19 +95,19 @@
         },
         getAndSetAllClients() {
           this.$http.get('http://localhost:3000/clients', { headers: { Authorization: this.token } }).then((clients) => {
-            this.$store.dispatch('setAllClients', clients);
+            this.$store.dispatch('setAllClients', clients.data);
           }, (clients) => {
           });
         },
         getAndSetAllProjects() {
           this.$http.get('http://localhost:3000/projects', { headers: { Authorization: this.token } }).then((projects) => {
-            this.$store.dispatch('setAllProjects', projects);
+            this.$store.dispatch('setAllProjects', projects.data);
           }, (projects) => {
           });
         },
         getAndSetAllBriefs() {
           this.$http.get('http://localhost:3000/briefs', { headers: { Authorization: this.token } }).then((briefs) => {
-            this.$store.dispatch('setAllBriefs', briefs);
+            this.$store.dispatch('setAllBriefs', briefs.data);
           }, (briefs) => {
           });
         },

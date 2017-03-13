@@ -83,6 +83,8 @@ export default {
         });
         // Set the user in the VUEX STATE for use in onboarding
         this.$store.dispatch('setUser', user);
+        // Event logged in
+        this.$bus.$emit('loggedIn');
         // If response status is 500 print the error messages
         if (response.status >= 200 && response.status <= 204) {
           this.$router.push('/clientkey');

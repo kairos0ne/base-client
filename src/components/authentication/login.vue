@@ -39,10 +39,6 @@ export default {
         email: '',
         password: '',
       },
-      authRequest: {
-        email: '',
-        password: '',
-      },
     };
   },
   methods: {
@@ -54,11 +50,12 @@ export default {
       // Post the user to the users api endpoint
       this.$http.post('http://localhost:3000/authenticate', request).then((response) => {
         // get body data (user)
-        const token = response.body;
-        this.$store.dispatch('setAuthToken', token.auth_token);
-        sessionStorage.setItem('Authorisation', token.auth_token);
+        const data = response.body;
+        this.$store.dispatch('setAuthToken', data.auth_token);
+        sessionStorage.setItem('Authorisation', data.auth_token);
+        sessionStorage.setItem('UserId', data.user_id);
+        this.$bus.$emit('loggedIn');
         this.$router.push('/dashboard ');
-        location.reload(true);
       }, (response) => {
         // errors
       });

@@ -19,7 +19,7 @@
                     <!-- Left Side Of Navbar -->
                     <userlinksin v-show="token"></userlinksin>
                     <userlinksout v-show="!token"></userlinksout>
-                    <userlinksfirst v-show="userId"></userlinksfirst>
+                    <userlinksfirst v-show="token && userId"></userlinksfirst>
                     
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
@@ -44,6 +44,10 @@ import userlinksfirst from './user-links-first';
 export default {
   data() {
     return {
+      clients: false,
+      UserIn: false,
+      token: '',
+      userId: '',
     };
   },
   components: {
@@ -52,25 +56,35 @@ export default {
     userlinksfirst,
   },
   mounted() {
+    this.$bus.$on('loggedIn', this.setLoggedIn);
+    this.getToken();
+    this.getUserId();
   },
   computed: {
     client() {
       return this.$store.getters.getClientFromOnboarding;
     },
-    userId() {
-      return sessionStorage.getItem('UserId');
-    },
-    token() {
-      return sessionStorage.getItem('Authorisation');
-    },
+
   },
   methods: {
     logout() {
       const token = null;
       sessionStorage.clear();
-      this.$router.push('/');
       this.$store.dispatch('setAuthToken', token);
-      window.location.reload(true);
+      this.getToken();
+      this.clients = false;
+      this.UserIn = false;
+      this.$router.push('/');
+    },
+    setLoggedIn() {
+      this.UserIn = true;
+      this.getToken();
+    },
+    getToken() {
+      this.token = sessionStorage.getItem('Authorisation');
+    },
+    getUserId() {
+      this.userId = sessionStorage.getItem('UserId');
     },
   },
 };

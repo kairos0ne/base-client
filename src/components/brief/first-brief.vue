@@ -4,10 +4,10 @@
             <div class="negative-space"></div>
             <form id="addbriefform" action="" method="POST" role="form" v-show="! submitted">
                 <div class="col-md-8 col-lg-11 col-sm-12  right-inner-addon pull-left">    
-                  <ui-textbox floating-label label="Brief Name" placeholder="Enter overview to the brief" v-model="newBriefData.overview"></ui-textbox>  
+                  <ui-textbox floating-label label="Brief Overview" placeholder="Enter overview to the brief" v-model="newBriefData.overview"></ui-textbox>  
                 </div>
                 <div class="col-md-8 col-lg-11 col-sm-12  right-inner-addon pull-left">
-                  <ui-textbox floating-label label="Project Name" placeholder="Enter the project name" v-model="newBriefData.objective"></ui-textbox>  
+                  <ui-textbox floating-label label="Objective" placeholder="Enter the brief core objective" v-model="newBriefData.objective"></ui-textbox>  
                 </div>     
             </form>
              <button type="button" class="first-client-btn btn btn-sm btn-default" @click.prevent="onFormSubmit">Submit</button>   
