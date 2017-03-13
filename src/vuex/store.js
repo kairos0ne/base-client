@@ -54,18 +54,23 @@ const mutations = {
   },
   [types.SET_INITIAL_CLIENT](state, request) {
     state.initialClient = request;
+    localStorage.setItem('firstClient', JSON.stringify(request));
   },
   [types.SET_ALL_CLIENTS](state, clients) {
     state.allClients = clients;
+    localStorage.setItem('allClients', JSON.stringify(clients));
   },
   [types.SET_ALL_PROJECTS](state, projects) {
     state.allProjects = projects;
+    localStorage.setItem('allProjects', JSON.stringify(projects));
   },
   [types.SET_ALL_BRIEFS](state, briefs) {
     state.allBriefs = briefs;
+    localStorage.setItem('allBriefs', JSON.stringify(briefs));
   },
   [types.SET_LOGGED_IN_USER](state, user) {
     state.loggedInUser = user;
+    sessionStorage.setItem('currentUser', JSON.stringify(user));
   },
   [types.SET_AUTH_TOKEN](state, token) {
     state.tokenHeader = token;
