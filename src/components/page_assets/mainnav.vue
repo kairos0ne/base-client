@@ -70,6 +70,7 @@ export default {
     logout() {
       const token = null;
       sessionStorage.clear();
+      localStorage.clear();
       this.$store.dispatch('setAuthToken', token);
       this.getToken();
       this.clients = false;

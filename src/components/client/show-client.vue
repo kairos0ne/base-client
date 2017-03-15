@@ -19,30 +19,7 @@
       </form>
     </div>
 </template>
-<style lang="sass?indentedSyntax">
 
-.dropzone
-  height: 100px
-  width: 100%
-  border: 1px dashed #999
-.dz-message
-  text-align: center
-  padding: 40px 0px 40px 0px
-
-@media screen and (max-width:412px) 
-  .dropzone
-    height: 50px
-    width: 100%
-    border: 1px dashed #999
-  .dz-message
-    text-align: center 
-    padding: 20px 0px 20px 0px
-  
-
- 
-
-
-</style>
 <script>
 /* eslint-disable no-unused-vars*/
 /* eslint-disable no-undef*/
@@ -58,7 +35,6 @@ export default {
     };
   },
   mounted() {
-    console.log('The current client:' + this.currentClient);
   },
   beforeDestroy() {
   },
@@ -84,3 +60,25 @@ export default {
 };
 
 </script>
+
+<style lang="sass?indentedSyntax">
+
+.dropzone
+  height: 100px
+  width: 100%
+  border: 1px dashed #999
+.dz-message
+  text-align: center
+  padding: 40px 0px 40px 0px
+
+@media screen and (max-width:412px) 
+  .dropzone
+    height: 50px
+    width: 100%
+    border: 1px dashed #999
+  .dz-message
+    text-align: center 
+    padding: 20px 0px 20px 0px
+  
+
+</style>

@@ -27,49 +27,6 @@
 	</ul>
 </template>
 
-<style lang="sass?indentedSyntax">
-.progress
-  marging: 0px
-
-#project_panel_client
-  font-size: 12px
-  margin: 0px
-
-#project_title
-  margin-top: 10px
-  padding-bottom: 10px
-  border-bottom: 1px solid #999999
-
-.projectlisttopclass
-  position: relative
-  display: block
-  padding: 0px 15px 30px 0px
-  margin: 0px 0px 10px 0px
-  background-color: #fff
-
-.projectlistclass
-  position: relative
-  display: block
-  padding: 10px 15px
-  margin: 5px 0px 15px 0px
-  background-color: #fff
-
-.project_panel
-  position: relative
-  display: block
-  background-color: #fff
-  margin: 5px 0px 0px 0px 
-
-hr
-  margin: 5px 0px 0px 0px
-  padding: 0px
-
-#project_list_bar
-  
-
-
-</style>
-
 <script>
 /* eslint-disable no-unused-vars*/
 /* eslint-disable no-undef*/
@@ -112,3 +69,45 @@ export default {
 };
 </script>
 
+<style lang="sass?indentedSyntax">
+.progress
+  marging: 0px
+
+#project_panel_client
+  font-size: 12px
+  margin: 0px
+
+#project_title
+  margin-top: 10px
+  padding-bottom: 10px
+  border-bottom: 1px solid #999999
+
+.projectlisttopclass
+  position: relative
+  display: block
+  padding: 0px 15px 30px 0px
+  margin: 0px 0px 10px 0px
+  background-color: #fff
+
+.projectlistclass
+  position: relative
+  display: block
+  padding: 10px 15px
+  margin: 5px 0px 15px 0px
+  background-color: #fff
+
+.project_panel
+  position: relative
+  display: block
+  background-color: #fff
+  margin: 5px 0px 0px 0px 
+
+hr
+  margin: 5px 0px 0px 0px
+  padding: 0px
+
+#project_list_bar
+  
+
+
+</style>

@@ -21,6 +21,7 @@ export default {
   },
   mounted() {
     this.getAllClients();
+    this.$bus.$on('fetchData', this.resetData);
   },
   computed: {
     token() {
@@ -31,7 +32,6 @@ export default {
     getAllClients() {
       this.$http.get('http://localhost:3000/clients', { headers: { Authorization: this.token } }).then((clients) => {
         this.allClients = clients.data;
-        console.log(this.allClients);
       }, (clients) => {
         console.log(http.errors);
       });
@@ -40,7 +40,9 @@ export default {
       this.selectedClient = client;
       this.$store.dispatch('setClientRest', client);
       this.$bus.$emit('setViewClient', client);
-      console.log(client);
+    },
+    resetData() {
+      this.getAllClients();
     },
   },
 };

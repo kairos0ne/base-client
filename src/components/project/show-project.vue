@@ -19,6 +19,39 @@
       </form>
     </div>
 </template>
+
+<script>
+/* eslint-disable no-unused-vars*/
+/* eslint-disable no-undef*/
+/* eslint-disable prefer-template*/
+import { getProjectRest } from './../../vuex/getters';
+
+export default {
+  name: 'show-project',
+  data() {
+    return {
+      ProjectID: null,
+      projectList: [],
+    };
+  },
+  mounted() {
+  },
+  beforeDestroy() {
+  },
+  computed: {
+    currentProject() {
+      return this.$store.getters.getProjectRest;
+    },
+  },
+  methods: {
+    editProject(currentProject) {
+      this.$bus.$emit('setEditProject', currentProject);
+    },
+  },
+};
+
+</script>
+
 <style lang="sass?indentedSyntax">
 
 .dropzone
@@ -37,35 +70,3 @@
     padding: 20px 0px 20px 0px
 
 </style>
-<script>
-/* eslint-disable no-unused-vars*/
-/* eslint-disable no-undef*/
-/* eslint-disable prefer-template*/
-import { getClientRest } from './../../vuex/getters';
-
-export default {
-  name: 'show-project',
-  data() {
-    return {
-      ProjectID: null,
-      projectList: [],
-    };
-  },
-  mounted() {
-    console.log('The current client:' + this.currentClient);
-  },
-  beforeDestroy() {
-  },
-  computed: {
-    currentProject() {
-      return this.$store.getters.getProjectRest;
-    },
-  },
-  methods: {
-    editProject(currentProject) {
-      this.$bus.$emit('setEditProject', currentProject);
-    },
-  },
-};
-
-</script>

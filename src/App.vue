@@ -1,9 +1,14 @@
 <template>
   <div id="app" >
-    <mainnav></mainnav>
-    <router-view></router-view>
-    <bottom></bottom>
-    </div>
+
+      <mainnav></mainnav>
+
+
+      <router-view></router-view>
+
+
+      <!--<bottom></bottom>-->
+ 
   </div>
 </template>
 <script>
