@@ -2,19 +2,19 @@
     <div>
         <ui-textbox  
           floating-label 
-          label="Project Name" 
-          v-model="currentProject.name"
+          label="Client Name" 
+          v-model="currentClient.name"
         ></ui-textbox>
 
         <ui-textbox
           enforce-maxlength
           floating-label
           help="Maximum 256 characters"
-          label="Project Description"
+          label="Client Description"
           placeholder="Introduce yourself in a few words"
           :multi-line="true"
           :maxlength="256"
-          v-model="currentProject.description"
+          v-model="currentClient.business_area"
         ></ui-textbox>
           
         <button 
@@ -29,17 +29,17 @@
 /* eslint-disable no-unused-vars*/
 /* eslint-disable no-undef*/
 /* eslint-disable prefer-template*/
-import { getProjectRest } from './../../vuex/getters';
+import { getClientRest } from './../../vuex/getters';
 
 export default {
   data() {
     return {
-      currentProject: {
+      currentClient: {
         name: '',
-        description: '',
-        client_id: null,
+        business_area: '',
+        user_id: null,
       },
-      projectId: null,
+      clientId: null,
     };
   },
   components: {
@@ -56,28 +56,26 @@ export default {
       return sessionStorage.getItem('Authorisation');
     },
   },
-  mounted() {
-    this.getProject();
+  created() {
+    this.getClient();
   },
   methods: {
     onFormSubmit(e) {
       // Prevent default action
       e.preventDefault();
       // Set the request data
-      const request = this.currentProject;
+      const request = this.currentClient;
       // Send ajax request
-      this.$http.put('http://localhost:3000/projects/' + this.projectId, request, { headers: { Authorization: this.token } }).then((response) => {
+      this.$http.put('http://localhost:3000/clients/' + this.clientId, request, { headers: { Authorization: this.token } }).then((response) => {
         // Set the vuex state for projectREST
-        this.$store.dispatch('setProjectRest', response.body);
+        this.$store.dispatch('setClientRest', response.body);
         // Refetch the dashboard data
         this.$bus.$emit('fetchData');
         // Set Show project to true on the dashboard parent component
-        this.$bus.$emit('setViewProject');
+        this.$bus.$emit('setViewClient');
         // Get the client data from the response
-        const client = response.body.client;
+        const projects = response.body.projects;
         // Set the clientREST with new method
-        this.setClientRest(client);
-        // Clear the data for garbage collection
         this.currentproject = {
           name: null,
           description: '',
@@ -87,17 +85,12 @@ export default {
         // Errors handled
       });
     },
-    getProject() {
-      const project = this.$store.getters.getProjectRest;
-      this.currentProject.name = project.name;
-      this.currentProject.description = project.description;
-      this.currentProject.client_id = project.client_id;
-      this.projectId = project.id;
-    },
-    setClientRest(client) {
-      this.$http.get('http://localhost:3000/clients/' + client.id, { headers: { Authorization: this.token } }).then((response) => {
-        this.$store.dispatch('setClientRest', response.body);
-      });
+    getClient() {
+      const client = this.$store.getters.getClientRest;
+      this.currentClient.name = client.name;
+      this.currentClient.business_area = client.business_area;
+      this.currentClient.user_id = client.user_id;
+      this.clientId = client.id;
     },
   },
 };

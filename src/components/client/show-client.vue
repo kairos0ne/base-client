@@ -44,17 +44,8 @@ export default {
     },
   },
   methods: {
-    editClient(currentClient) {
-      this.$bus.$emit('setEditClient', currentClient);
-    },
-    setTheFirstClient(client) {
-      this.$bus.$on(setFirstClient, client);
-      this.currentClient = client;
-    },
-    setClient(item) {
-    },
-    setLength() {
-      this.projectList = currentClient.projects;
+    editClient() {
+      this.$bus.$emit('setEditClient');
     },
   },
 };

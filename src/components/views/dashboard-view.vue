@@ -28,6 +28,7 @@
           <showclient v-if="showClient"></showclient>
           <showproject v-if="showProject"></showproject>
           <editproject v-if="editProject"></editproject>
+          <editclient v-if="editClient"></editclient>
         </div>
     </div>
 </div>
@@ -42,6 +43,7 @@
     // Client - resources/assets/js/components/client
     import showclient from '../client/show-client';
     import listclient from '../client/list-clients';
+    import editclient from '../client/edit-client';
     // Project - recourses/js/components/project
     import showproject from '../project/show-project';
     import editproject from '../project/edit-project';
@@ -59,6 +61,7 @@
           showClient: true,
           showProject: false,
           editProject: false,
+          editClient: false,
           client: {},
           projects: {},
           briefs: {},
@@ -70,6 +73,7 @@
         showproject,
         projectpanels,
         editproject,
+        editclient,
         // Brief Components
 
       },
@@ -80,6 +84,7 @@
         this.getAndSetAllBriefs();
         this.$bus.$on('setViewProject', this.setProjectShow);
         this.$bus.$on('setViewClient', this.setClientShow);
+        this.$bus.$on('setEditClient', this.setClientEdit);
         this.$bus.$on('setEditProject', this.setProjectEdit);
         this.$bus.$on('fetchData', this.resetData);
       },
@@ -122,19 +127,28 @@
           });
         },
         setProjectShow() {
-          this.showClient = false;
           this.showProject = true;
+          this.showClient = false;
           this.editProject = false;
+          this.editClient = false;
+        },
+        setProjectEdit() {
+          this.editProject = true;
+          this.showClient = false;
+          this.showProject = false;
+          this.editClient = false;
         },
         setClientShow() {
           this.showClient = true;
           this.showProject = false;
           this.editProject = false;
+          this.editClient = false;
         },
-        setProjectEdit() {
+        setClientEdit() {
+          this.editClient = true;
           this.showClient = false;
           this.showProject = false;
-          this.editProject = true;
+          this.editProject = false;
         },
         resetData() {
           this.getAndSetAllClients();
