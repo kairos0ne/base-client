@@ -14,9 +14,6 @@
             </div>
             <hr>
         </ul>
-      <form action="/file-upload" class="dropzone needsclick dz-clickable" id="my-awesome-dropzone">  
-        <div class="dz-message needsclick">"Drop Files Here or Click to Add Files"</div>
-      </form>
     </div>
 </template>
 

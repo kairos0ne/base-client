@@ -31,7 +31,7 @@ Vue.use(VueResource);
 
 require('flexboxgrid');
 
-require('bootstrap');
+// require('bootstrap');
 
 const routes = [
   { path: '/', component: welcome },

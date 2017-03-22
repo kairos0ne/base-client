@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ul >
+        <ul>
             <li id="project_title" class="list-group-item h4 ">{{ currentProject.name }}
                 <a id="btn-edit" class="btn btn-default btn-xs pull-right" @click.prevent="editProject">
                     <i class="fa fa-pencil pull-right"></i>Edit
@@ -12,11 +12,13 @@
             <div id="page_content_brief">
                 <h4>{{ currentProject.description }}</h3>
             </div>
-            <hr>
         </ul>
-      <form action="/file-upload" class="dropzone needsclick dz-clickable" id="my-awesome-dropzone">  
-        <div class="dz-message needsclick">"Drop Files Here or Click to Add Files"</div>
-      </form>
+          <!--<ui-tabs type="text">  
+              <ui-tab v-if="epics" title="Epics">
+                
+              </ui-tab>
+          </ui-tabs>-->
+
     </div>
 </template>
 
@@ -25,16 +27,20 @@
 /* eslint-disable no-undef*/
 /* eslint-disable prefer-template*/
 import { getProjectRest } from './../../vuex/getters';
+// import epicspanel from './epics-panel';
 
 export default {
   name: 'show-project',
   data() {
     return {
-      ProjectID: null,
-      projectList: [],
+      epics: [],
     };
   },
+  components: {
+    // epicspanel,
+  },
   mounted() {
+    this.$bus.$on('setViewProject', this.getEpics());
   },
   beforeDestroy() {
   },
@@ -42,10 +48,16 @@ export default {
     currentProject() {
       return this.$store.getters.getProjectRest;
     },
+    token() {
+      return sessionStorage.getItem('Authorisation');
+    },
   },
   methods: {
     editProject(currentProject) {
       this.$bus.$emit('setEditProject', currentProject);
+    },
+    getEpics() {
+      this.epics = this.currentProject.epic;
     },
   },
 };
@@ -68,5 +80,13 @@ export default {
   .dz-message
     text-align: center 
     padding: 20px 0px 20px 0px
+
+.ui-tab-header-item__text 
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  font-size: 2rem
+  font-weight: 300
+  padding: 0px 10px
 
 </style>

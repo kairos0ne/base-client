@@ -37,9 +37,12 @@ export default {
       });
     },
     selectClient(client) {
-      this.selectedClient = client;
-      this.$store.dispatch('setClientRest', client);
-      this.$bus.$emit('setViewClient', client);
+      this.$http.get('http://localhost:3000/clients/' + client.id, { headers: { Authorization: this.token } }).then((response) => {
+        const cclient = response.body;
+        this.selectedClient = cclient;
+        this.$store.dispatch('setClientRest', cclient);
+      });
+      this.$bus.$emit('setViewClient');
     },
     resetData() {
       this.getAllClients();
@@ -51,7 +54,6 @@ export default {
 .box
   padding: 0px 10px 0px 10px
   ul
-    padding: 10px 0px 0px 0px 
     li
       padding: 5px 5px 5px 5px 
       display: block

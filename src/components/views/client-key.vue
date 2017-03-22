@@ -19,7 +19,7 @@
     </div>    
     <div class="container-fluid">
       <div class="key">
-        <p class="key-text" ><strong class="spacer">KEY: </strong>{{ token }}</p>
+        <p class="key-text" ><strong class="spacer">KEY: </strong>{{ auth }}</p>
       </div>
       <p> Proceed to  <button type="button" class="btn btn-sm btn-default">Introduction</button></p>
     </div>

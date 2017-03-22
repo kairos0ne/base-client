@@ -16,7 +16,11 @@
           :maxlength="256"
           v-model="currentClient.business_area"
         ></ui-textbox>
-          
+
+        <form action="/file-upload" class="dropzone needsclick dz-clickable" id="my-awesome-dropzone">  
+          <div class="dz-message needsclick">"Drop Files Here or Click to Add Files"</div>
+        </form>
+
         <button 
           type="button" 
           class="first-client-btn btn btn-sm btn-default" 

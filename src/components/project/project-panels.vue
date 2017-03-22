@@ -3,16 +3,12 @@
 	    <li id="project_title" class="list-group-item h4 ">Projects
 	        <a @click.prevent="setListView"><span class="fa fa-list fa-pull-right"></a></span>
 	        <a @click.prevent="setCardView"><span class="fa fa-th-large fa-pull-right"></a></span>
-	        <a href="{filter}"><span class="fa fa-filter fa-pull-right"></a></span>
+	        <a href=""><span class="fa fa-filter fa-pull-right"></a></span>
 	    </li>
 	    
 	    <li v-show="cardView" v-for="project in currentClient.projects" class="project_panel"><a>
 	        <div id="project_panel_title" @click.prevent="setProjectRest(project)"><i class="fa fa-briefcase"></i>&nbsp;{{ project.name }}</div></a>
 	        <p id="project_panel_BusUnit"><i class="fa fa-folder"></i>&nbsp;<strong>Client:</strong>&nbsp;{{ currentClient.name }}</p>
-	        <div id="progress_bar_ID" class="progress">
-	            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-	            </div>
-	        </div>
           <hr>
 	    </li>
 
@@ -36,8 +32,6 @@ export default {
   name: 'project-panels',
   data() {
     return {
-      projectList: [],
-      currentProject: {},
       cardView: true,
       listView: false,
     };
@@ -45,6 +39,9 @@ export default {
   computed: {
     currentClient() {
       return this.$store.getters.getClientRest;
+    },
+    token() {
+      return sessionStorage.getItem('Authorisation');
     },
   },
   mounted() {
@@ -59,10 +56,12 @@ export default {
       this.listView = false;
     },
     setProjectRest(project) {
-      this.currentProject = project;
-      // Set the currentProject object on the rest state
-      this.$store.dispatch('setProjectRest', project);
-      this.$bus.$emit('setViewProject', project);
+      this.$http.get('http://localhost:3000/projects/' + project.id, { headers: { Authorization: this.token } }).then((response) => {
+        const cproject = response.body;
+        // this.currentProject = cproject;
+        this.$store.dispatch('setProjectRest', cproject);
+      });
+      this.$bus.$emit('setViewProject');
     },
   },
 };
@@ -91,8 +90,8 @@ export default {
 .projectlistclass
   position: relative
   display: block
-  padding: 10px 15px
-  margin: 5px 0px 15px 0px
+  padding: 10px 0px 0px 0px 
+  margin: 1px 
   background-color: #fff
 
 .project_panel
