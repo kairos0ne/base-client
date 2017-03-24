@@ -57,13 +57,17 @@ export default {
     li
       padding: 5px 5px 5px 5px 
       display: block
-      border-botom: 0.5px   
+      border-botom: 0.5px 
+
+.client_list_item 
+  font-size: 1.3rem 
     
 .clienlistheading
   font-style: normal
   min-width: 200px
   padding: 5px 10px 10px 5px 
   border-bottom: 1px solid #999999
+  font-size: 1.5rem
 
 .clientlistgroupe
   border-right: 1px 
@@ -75,4 +79,6 @@ export default {
   bottom: 0
   left: 0
   padding: 5px 0px 0px 20px
+
+
 </style>

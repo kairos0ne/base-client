@@ -48,9 +48,15 @@ const mutations = {
   },
   [types.SET_CLIENT_REST](state, client) {
     state.clientREST = client;
+    localStorage.setItem('currentClient', JSON.stringify(client));
   },
   [types.SET_PROJECT_REST](state, project) {
     state.projectREST = project;
+    localStorage.setItem('currentProject', JSON.stringify(project));
+  },
+  [types.SET_EPIC_REST](state, epic) {
+    state.epicREST = epic;
+    localStorage.setItem('currentEpic', JSON.stringify(epic));
   },
   [types.SET_INITIAL_CLIENT](state, request) {
     state.initialClient = request;

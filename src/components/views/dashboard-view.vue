@@ -7,7 +7,6 @@
               ">
         <div id="sidebar" class="box sidebar">
           <listclient></listclient>
-          
         </div>
     </div>
     <div class="col-lg-2
@@ -24,12 +23,13 @@
                 col-sm-12
                 col-xs-12
               ">    
-        <div id="main-content" class="box">
-          <showclient v-if="showClient"></showclient>
-          <showproject v-if="showProject"></showproject>
-          <editproject v-if="editProject"></editproject>
-          <editclient v-if="editClient"></editclient>
-        </div>
+      <div id="main-content" class="box">
+        <showclient v-if="showClient"></showclient>
+        <showproject v-if="showProject"></showproject>
+        <editproject v-if="editProject"></editproject>
+        <editclient v-if="editClient"></editclient>
+        <showepic v-if="showEpic"></showepic>
+      </div>
     </div>
 </div>
 </template>
@@ -44,11 +44,10 @@
     import showclient from '../client/show-client';
     import listclient from '../client/list-clients';
     import editclient from '../client/edit-client';
-    // Project - recourses/js/components/project
     import showproject from '../project/show-project';
     import editproject from '../project/edit-project';
-    // import listproject from '../project/list-project';
     import projectpanels from '../project/project-panels';
+    import showepic from '../epic/show-epic';
     import * as getters from './../../vuex/getters';
     import * as actions from './../../vuex/actions';
 
@@ -62,6 +61,7 @@
           showProject: false,
           editProject: false,
           editClient: false,
+          showEpic: false,
           client: {},
           projects: {},
           briefs: {},
@@ -74,6 +74,7 @@
         projectpanels,
         editproject,
         editclient,
+        showepic,
         // Brief Components
 
       },
@@ -84,6 +85,7 @@
         this.getAndSetAllBriefs();
         this.$bus.$on('setViewProject', this.setProjectShow);
         this.$bus.$on('setViewClient', this.setClientShow);
+        this.$bus.$on('setViewEpic', this.setEpicShow);
         this.$bus.$on('setEditClient', this.setClientEdit);
         this.$bus.$on('setEditProject', this.setProjectEdit);
         this.$bus.$on('fetchData', this.resetData);
@@ -131,21 +133,32 @@
           this.showClient = false;
           this.editProject = false;
           this.editClient = false;
+          this.showEpic = false;
         },
         setProjectEdit() {
           this.editProject = true;
           this.showClient = false;
           this.showProject = false;
           this.editClient = false;
+          this.showEpic = false;
         },
         setClientShow() {
           this.showClient = true;
           this.showProject = false;
           this.editProject = false;
           this.editClient = false;
+          this.showEpic = false;
         },
         setClientEdit() {
           this.editClient = true;
+          this.showClient = false;
+          this.showProject = false;
+          this.editProject = false;
+          this.showEpic = false;
+        },
+        setEpicShow() {
+          this.showEpic = true;
+          this.editClient = false;
           this.showClient = false;
           this.showProject = false;
           this.editProject = false;
@@ -162,16 +175,11 @@
 
 #sidebar     
   border-right: 1px solid #999999
+  min-height: 100vh
 
 #middle-bar
   border-right: 1px solid #999999
+  min-height: 100vh
 
-#main-content
-
-.fixed-bottom
-  position: absolute
-  right: 0
-  bottom: 0
-  left: 0
   
 </style>

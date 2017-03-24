@@ -20,6 +20,8 @@ export const getBriefRest = state => state.briefREST;
 
 export const getFeatureRest = state => state.featureREST;
 
+export const getEpicRest = state => state.epicREST;
+
 export const getAllClients = state => state.allClients;
 
 export const getAllProjects = state => state.allProjects;

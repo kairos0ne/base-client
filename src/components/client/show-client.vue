@@ -10,7 +10,7 @@
                 </a>
             </li>
             <div id="page_content_brief">
-                <h4>{{ currentClient.business_area }}</h3>
+                <p>{{ currentClient.business_area }}</p>
             </div>
             <hr>
         </ul>
@@ -67,6 +67,9 @@ export default {
   .dz-message
     text-align: center 
     padding: 20px 0px 20px 0px
-  
+
+#page_content_brief
+  padding: 5px
+  font-style: normal
 
 </style>

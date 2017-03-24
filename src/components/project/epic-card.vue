@@ -11,7 +11,6 @@ export default {
   name: 'epic-card',
   data() {
     return {
-
       epic: {},
     };
   },

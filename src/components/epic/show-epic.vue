@@ -1,26 +1,22 @@
 <template>
     <div>
         <ul>
-            <li id="project_title" class="list-group-item h4 ">{{ currentProject.name }}
-                <a id="btn-edit" class="btn btn-default btn-xs pull-right" @click.prevent="editProject">
+            <li id="project_title" class="list-group-item h4 ">{{ currentEpic.epic }}
+                <a id="btn-edit" class="btn btn-default btn-xs pull-right" @click.prevent="editEpic()">
                     <i class="fa fa-pencil pull-right"></i>Edit
                 </a>
                 <a id="btn-complete" class="btn btn-primary btn-xs pull-right" href="#">
                     <i class="fa fa-tick pull-right"></i>Complete
                 </a>
-            </li>
-            <div id="page_content_brief">
-                <p>{{ currentProject.description }}</p>
-            </div>
+            </li>   
         </ul>
+        <br>
           <ui-tabs type="text">  
-              <ui-tab  title="Epics">  
-                <li class="epic-list" v-for="epic in currentProject.epic"><a @click.prevent="setEpicRest(epic)">{{epic.epic}}</a><hr> </li>
-              </ui-tab>
-              <ui-tab title="Briefs">
-                <li class="epic-list" v-for="brief in currentProject.briefs"><a>{{brief.overview}} <hr></a> </li>
+              <ui-tab  title="Stories">  
+                <li class="epic-list" v-for="story in currentEpic.stories" ><a @click.prevent="setStoryRest(story)">{{story.asa}}, {{story.iwant}}, {{story.sothat}}</a><hr> </li>
               </ui-tab>
           </ui-tabs>  
+
     </div>
 </template>
 
@@ -28,13 +24,14 @@
 /* eslint-disable no-unused-vars*/
 /* eslint-disable no-undef*/
 /* eslint-disable prefer-template*/
-import { getProjectRest } from './../../vuex/getters';
+import { getEpicRest } from './../../vuex/getters';
 import { setEpicRest } from './../../vuex/actions';
 
 export default {
   name: 'show-project',
   data() {
     return {
+      selectedEpic: {},
     };
   },
   components: {
@@ -44,16 +41,16 @@ export default {
   beforeDestroy() {
   },
   computed: {
-    currentProject() {
-      return this.$store.getters.getProjectRest;
+    currentEpic() {
+      return this.$store.getters.getEpicRest;
     },
     token() {
       return sessionStorage.getItem('Authorisation');
     },
   },
   methods: {
-    editProject(currentProject) {
-      this.$bus.$emit('setEditProject', currentProject);
+    editEpic(currentEpic) {
+      this.$bus.$emit('setEditEpic', currentEpic);
     },
     setEpicRest(epic) {
       this.$http.get('http://localhost:3000/epics/' + epic.id, { headers: { Authorization: this.token } }).then((response) => {
@@ -62,7 +59,6 @@ export default {
         console.log(erest);
         this.$store.dispatch('setEpicRest', erest);
       });
-      this.$bus.$emit('setViewEpic');
     },
   },
 };

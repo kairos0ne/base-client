@@ -10,6 +10,8 @@ export const SET_CLIENT_REST = 'SET_CLIENT_REST';
 
 export const SET_PROJECT_REST = 'SET_PROJECT_REST';
 
+export const SET_EPIC_REST = 'SET_EPIC_REST';
+
 export const SET_BRIEF_REST = 'SET_CLIENT_REST';
 
 export const SET_FEATURE_REST = 'SET_FEATURE_REST';

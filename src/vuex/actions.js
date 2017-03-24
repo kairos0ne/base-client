@@ -25,6 +25,10 @@ export const setProjectRest = ({ commit }, project) => {
   commit('SET_PROJECT_REST', project);
 };
 
+export const setEpicRest = ({ commit }, epic) => {
+  commit('SET_EPIC_REST', epic);
+};
+
 export const setInitialClient = ({ commit }, request) => {
   commit('SET_INITIAL_CLIENT', request);
 };

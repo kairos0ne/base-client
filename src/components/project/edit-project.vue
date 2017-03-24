@@ -75,6 +75,7 @@ export default {
         this.$store.dispatch('setProjectRest', response.body);
         // Refetch the dashboard data
         this.$bus.$emit('fetchData');
+        // Update the project panels
         // Set Show project to true on the dashboard parent component
         this.$bus.$emit('setViewProject');
         // Get the client data from the response

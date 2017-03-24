@@ -7,14 +7,14 @@
 	    </li>
 	    
 	    <li v-show="cardView" v-for="project in currentClient.projects" class="project_panel"><a>
-	        <div id="project_panel_title" @click.prevent="setProjectRest(project)"><i class="fa fa-briefcase"></i>&nbsp;{{ project.name }}</div></a>
-	        <p id="project_panel_BusUnit"><i class="fa fa-folder"></i>&nbsp;<strong>Client:</strong>&nbsp;{{ currentClient.name }}</p>
+	        <div class="project_panel_title" @click.prevent="setProjectRest(project)"><i class="fa fa-briefcase"></i>&nbsp;{{ project.name }}</div></a>
+	        <p class="project_panel_bus_area"><i class="fa fa-folder"></i>&nbsp;<strong>Client:</strong>&nbsp;{{ currentClient.name }}</p>
           <hr>
 	    </li>
 
 	    <!-- Start List View -->
 		<ul v-show="listView" class="list-group projectlistclass">
-      <li id="project_list_bar" class="list-group-item" v-for="project in currentClient.projects" @click.prevent="setProjectRest(project)">
+      <li id="project_list_bar" class="project_list_item" v-for="project in currentClient.projects" @click.prevent="setProjectRest(project)">
           <i class="fa fa-briefcase"></i>&nbsp;
           {{ project.name }}
       <hr>
@@ -62,6 +62,7 @@ export default {
         this.$store.dispatch('setProjectRest', cproject);
       });
       this.$bus.$emit('setViewProject');
+      this.$bus.$emit('updateProjectData');
     },
   },
 };
@@ -79,6 +80,7 @@ export default {
   margin-top: 10px
   padding-bottom: 10px
   border-bottom: 1px solid #999999
+  font-size: 1.5rem
 
 .projectlisttopclass
   position: relative
@@ -100,12 +102,19 @@ export default {
   background-color: #fff
   margin: 5px 0px 0px 0px 
 
+.project_list_item
+  font-size: 1.3rem 
+
+.project_panel_bus_area
+  font-size: 1.3rem
+
 hr
   margin: 5px 0px 0px 0px
   padding: 0px
 
-#project_list_bar
-  
+.project_panel_title
+  font-size: 1.3rem
+
 
 
 </style>
