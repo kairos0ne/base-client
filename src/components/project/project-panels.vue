@@ -69,6 +69,7 @@ export default {
 </script>
 
 <style lang="sass?indentedSyntax">
+
 .progress
   marging: 0px
 

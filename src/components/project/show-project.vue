@@ -15,7 +15,12 @@
         </ul>
           <ui-tabs type="text">  
               <ui-tab  title="Epics">  
-                <li class="epic-list" v-for="epic in currentProject.epic"><a @click.prevent="setEpicRest(epic)">{{epic.epic}}</a><hr> </li>
+                <li class="epic-list" v-for="epic in currentProject.epic">
+                  <a @click.prevent="setEpicRest(epic)">{{ epic.epic }} 
+                    <!--<epiccard v-bind:epicId="epic.id"></epiccard>-->
+                    <hr>
+                  </a> 
+                </li>
               </ui-tab>
               <ui-tab title="Briefs">
                 <li class="epic-list" v-for="brief in currentProject.briefs"><a>{{brief.overview}} <hr></a> </li>
@@ -30,6 +35,7 @@
 /* eslint-disable prefer-template*/
 import { getProjectRest } from './../../vuex/getters';
 import { setEpicRest } from './../../vuex/actions';
+import epiccard from './epic-card';
 
 export default {
   name: 'show-project',
@@ -38,8 +44,10 @@ export default {
     };
   },
   components: {
+    epiccard,
   },
   mounted() {
+    this.setEpics();
   },
   beforeDestroy() {
   },
@@ -63,6 +71,9 @@ export default {
         this.$store.dispatch('setEpicRest', erest);
       });
       this.$bus.$emit('setViewEpic');
+    },
+    setEpics() {
+      console.log(this.currentProject.epic);
     },
   },
 };

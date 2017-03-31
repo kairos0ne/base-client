@@ -1,6 +1,6 @@
 <template>
   <div>
-    <li  class="epic-list" >{{epic.epic}}  </li>
+    <li  class="epic-list" ></li>
   </div>
 </template>
 <script>
@@ -12,6 +12,7 @@ export default {
   data() {
     return {
       epic: {},
+      stories: [],
     };
   },
   props: {
@@ -24,7 +25,7 @@ export default {
   },
   created() {
     this.$nextTick(() => {
-      this.$bus.$on('setViewProject', this.getEpic());
+      this.$bus.$on('setViewProject', this.getEpic);
     });
   },
   methods: {
@@ -32,6 +33,7 @@ export default {
       this.$http.get('http://localhost:3000/epics/' + this.epicId, { headers: { Authorization: this.token } }).then((response) => {
         this.epic = response.body;
       });
+      this.stories = this.epic.stories;
     },
   },
 };
