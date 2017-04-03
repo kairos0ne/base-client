@@ -16,8 +16,8 @@
           <ui-tabs type="text">  
               <ui-tab  title="Epics">  
                 <li class="epic-list" v-for="epic in currentProject.epic">
-                  <a @click.prevent="setEpicRest(epic)">{{ epic.epic }} 
-                    <!--<epiccard v-bind:epicId="epic.id"></epiccard>-->
+                  <a @click.prevent="setEpicRest(epic)">
+                    <epiccard v-bind:epicId="epic.id"></epiccard>
                     <hr>
                   </a> 
                 </li>

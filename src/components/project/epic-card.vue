@@ -1,6 +1,6 @@
 <template>
   <div>
-    <li  class="epic-list" ></li>
+    <li  class="epic-list" >{{ epic.epic }}  
   </div>
 </template>
 <script>
@@ -23,10 +23,8 @@ export default {
       return sessionStorage.getItem('Authorisation');
     },
   },
-  created() {
-    this.$nextTick(() => {
-      this.$bus.$on('setViewProject', this.getEpic);
-    });
+  mounted() {
+    this.$bus.$on('setViewProject', this.getEpic);
   },
   methods: {
     getEpic() {
